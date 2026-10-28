@@ -1,0 +1,48 @@
+id: '[B]The_Stair_Dash'
+title: The Stair Dash
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -407
+  pos2:
+    x: -233
+    y: 17
+    z: -379
+start:
+  world: PKW
+  x: -237.73017399494708
+  y: 4.0
+  z: -392.4935911341679
+  yaw: 90.89819
+  pitch: -1.800129
+end:
+  world: PKW
+  x: -267.5469669835086
+  y: 6.0
+  z: -392.5764184223537
+  yaw: 90.1481
+  pitch: 60.299862
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 10
+  - 20
+  - 10
+  - 20
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4

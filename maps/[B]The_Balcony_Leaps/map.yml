@@ -1,0 +1,65 @@
+id: '[B]The_Balcony_Leaps'
+title: The Balcony Leaps
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 67
+    y: -8
+    z: -205
+  pos2:
+    x: 107
+    y: 17
+    z: -176
+start:
+  world: PKW
+  x: 102.37839202423544
+  y: 1.0
+  z: -190.49539225360206
+  yaw: 90.33496
+  pitch: -4.0743146
+end:
+  world: PKW
+  x: 68.38759070897841
+  y: 1.0
+  z: -190.4820418857698
+  yaw: 82.34558
+  pitch: 61.95543
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 14054297-885e-4159-9a48-88d416624946
+    region:
+      world: PKW_0325
+      pos1:
+        x: -391
+        y: 63
+        z: 418
+      pos2:
+        x: -351
+        y: 88
+        z: 447
+    start:
+      world: PKW_0325
+      x: -355.62160797576456
+      y: 72.0
+      z: 432.50460774639794
+      yaw: 90.33496
+      pitch: -4.0743146
+    end:
+      world: PKW_0325
+      x: -389.6124092910216
+      y: 72.0
+      z: 432.51795811423017
+      yaw: 82.34558
+      pitch: 61.95543

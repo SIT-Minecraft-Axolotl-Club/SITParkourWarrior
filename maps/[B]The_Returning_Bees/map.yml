@@ -1,0 +1,203 @@
+id: '[B]The_Returning_Bees'
+title: The Returning Bees
+difficulty: normal
+deployed: true
+effects:
+  particles: false
+  sound: false
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -137
+  pos2:
+    x: -233
+    y: 17
+    z: -109
+start:
+  world: PKW
+  x: -237.6247511002565
+  y: 1.0625
+  z: -122.57514180053386
+  yaw: 90.144196
+  pitch: 0.21013983
+end:
+  world: PKW
+  x: -267.4724268689967
+  y: 1.0
+  z: -122.601792317231
+  yaw: 97.480865
+  pitch: 65.75075
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  - state_9.schem
+  - state_10.schem
+  - state_11.schem
+  - state_12.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+deployments:
+  '0':
+    id: 7645cdcf-c848-40ad-9537-89bf471cb763
+    region:
+      world: '1'
+      pos1:
+        x: -859
+        y: 205
+        z: -279
+      pos2:
+        x: -823
+        y: 230
+        z: -251
+    start:
+      world: '1'
+      x: -827.6247511002565
+      y: 214.0625
+      z: -264.57514180053386
+      yaw: 90.144196
+      pitch: 0.21013983
+    end:
+      world: '1'
+      x: -857.4724268689968
+      y: 214.0
+      z: -264.601792317231
+      yaw: 97.480865
+      pitch: 65.75075
+  '1':
+    id: d7223d54-6e28-49d9-a0e6-8c2436decf0f
+    region:
+      world: '1'
+      pos1:
+        x: -859
+        y: 205
+        z: -279
+      pos2:
+        x: -823
+        y: 230
+        z: -251
+    start:
+      world: '1'
+      x: -827.6247511002565
+      y: 214.0625
+      z: -264.57514180053386
+      yaw: 90.144196
+      pitch: 0.21013983
+    end:
+      world: '1'
+      x: -857.4724268689968
+      y: 214.0
+      z: -264.601792317231
+      yaw: 97.480865
+      pitch: 65.75075
+  '2':
+    id: 6b883f7e-961f-4ef5-8dcc-e217832dd0e7
+    region:
+      world: world
+      pos1:
+        x: -872
+        y: 70
+        z: -232
+      pos2:
+        x: -836
+        y: 95
+        z: -204
+    start:
+      world: world
+      x: -840.6247511002565
+      y: 79.0625
+      z: -217.57514180053386
+      yaw: 90.144196
+      pitch: 0.21013983
+    end:
+      world: world
+      x: -870.4724268689968
+      y: 79.0
+      z: -217.601792317231
+      yaw: 97.480865
+      pitch: 65.75075
+  '3':
+    id: a9653afb-fedf-4852-a544-8be803bb2846
+    region:
+      world: world
+      pos1:
+        x: -872
+        y: 70
+        z: -232
+      pos2:
+        x: -836
+        y: 95
+        z: -204
+    start:
+      world: world
+      x: -840.6247511002565
+      y: 79.0625
+      z: -217.57514180053386
+      yaw: 90.144196
+      pitch: 0.21013983
+    end:
+      world: world
+      x: -870.4724268689968
+      y: 79.0
+      z: -217.601792317231
+      yaw: 97.480865
+      pitch: 65.75075
+  '4':
+    id: 39aa48cd-8748-4f52-83c6-d17505cba35c
+    region:
+      world: PKW_cs
+      pos1:
+        x: -128
+        y: 86
+        z: 179
+      pos2:
+        x: -92
+        y: 111
+        z: 207
+    start:
+      world: PKW_cs
+      x: -96.6247511002565
+      y: 95.0625
+      z: 193.42485819946614
+      yaw: 90.144196
+      pitch: 0.21013983
+    end:
+      world: PKW_cs
+      x: -126.4724268689967
+      y: 95.0
+      z: 193.398207682769
+      yaw: 97.480865
+      pitch: 65.75075

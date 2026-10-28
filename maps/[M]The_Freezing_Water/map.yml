@@ -1,0 +1,42 @@
+id: '[M]The_Freezing_Water'
+title: The Freezing Water
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -284
+    y: -8
+    z: 95
+  pos2:
+    x: -256
+    y: 17
+    z: 131
+start:
+  world: PKW
+  x: -269.49392157015006
+  y: 1.0
+  z: 100.56669936132126
+  yaw: 0.26818848
+  pitch: 0.65562934
+end:
+  world: PKW
+  x: -269.53856440981093
+  y: 2.0
+  z: 130.61002740995934
+  yaw: -26.306885
+  pitch: 58.53356
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 30
+  - 30
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2

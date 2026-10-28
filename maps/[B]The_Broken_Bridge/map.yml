@@ -1,0 +1,48 @@
+id: '[B]The_Broken_Bridge'
+title: The Broken Bridge
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -357
+    y: -8
+    z: -137
+  pos2:
+    x: -321
+    y: 17
+    z: -109
+start:
+  world: PKW
+  x: -325.6918058901577
+  y: 1.0
+  z: -122.52794552467789
+  yaw: 89.42114
+  pitch: -0.81190246
+end:
+  world: PKW
+  x: -355.5573313385194
+  y: 3.0
+  z: -122.58921151123462
+  yaw: 84.52997
+  pitch: 74.83701
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 10
+  - 30
+  - 10
+  - 30
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4

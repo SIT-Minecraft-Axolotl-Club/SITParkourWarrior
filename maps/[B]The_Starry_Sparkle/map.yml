@@ -1,0 +1,81 @@
+id: '[B]The_Starry_Sparkle'
+title: The Starry Sparkle
+difficulty: easy
+deployed: true
+effects:
+  particles: false
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 160
+    y: -8
+    z: -173
+  pos2:
+    x: 189
+    y: 17
+    z: -145
+start:
+  world: PKW
+  x: 184.3878232696839
+  y: 1.0
+  z: -158.49271661246598
+  yaw: 90.10083
+  pitch: -1.3007071
+end:
+  world: PKW
+  x: 161.50541132364944
+  y: 5.0
+  z: -158.56348893900417
+  yaw: 84.3938
+  pitch: 62.12046
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+deployments:
+  '0':
+    id: 2e23e933-33d4-4d34-9888-3b4ee04afe80
+    region:
+      world: PKW_0325
+      pos1:
+        x: -111
+        y: 64
+        z: 418
+      pos2:
+        x: -82
+        y: 89
+        z: 446
+    start:
+      world: PKW_0325
+      x: -86.6121767303161
+      y: 73.0
+      z: 432.507283387534
+      yaw: 90.10083
+      pitch: -1.3007071
+    end:
+      world: PKW_0325
+      x: -109.49458867635056
+      y: 77.0
+      z: 432.4365110609958
+      yaw: 84.3938
+      pitch: 62.12046

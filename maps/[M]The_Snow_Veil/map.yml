@@ -1,0 +1,65 @@
+id: '[M]The_Snow_Veil'
+title: The Snow Veil
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 66
+    y: -8
+    z: 12
+  pos2:
+    x: 94
+    y: 17
+    z: 51
+start:
+  world: PKW
+  x: 80.42753918372175
+  y: 1.0
+  z: 17.501260003049122
+  yaw: 0.15844727
+  pitch: -0.7583922
+end:
+  world: PKW
+  x: 80.47334625454221
+  y: 1.0
+  z: 50.557232216528554
+  yaw: -135.16284
+  pitch: 83.69454
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 9ab2df39-088c-4efa-b69a-d433e050dc69
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 396
+      pos2:
+        x: 14
+        y: 122
+        z: 435
+    start:
+      world: PKW_cs
+      x: 0.4275391837217484
+      y: 106.0
+      z: 401.50126000304914
+      yaw: 0.15844727
+      pitch: -0.7583922
+    end:
+      world: PKW_cs
+      x: 0.47334625454220713
+      y: 106.0
+      z: 434.5572322165286
+      yaw: -135.16284
+      pitch: 83.69454

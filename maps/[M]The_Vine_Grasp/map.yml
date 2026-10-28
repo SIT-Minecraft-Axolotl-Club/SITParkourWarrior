@@ -1,0 +1,38 @@
+id: '[M]The_Vine_Grasp'
+title: The Vine Grasp
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -104
+    y: -8
+    z: -37
+  pos2:
+    x: -76
+    y: 17
+    z: -1
+start:
+  world: PKW
+  x: -89.54521592862883
+  y: 1.0625
+  z: -31.52356239789781
+  yaw: 0.4494629
+  pitch: 3.3001072
+end:
+  world: PKW
+  x: -89.50374379863317
+  y: 1.0
+  z: -1.7142139822590814
+  yaw: -148.50027
+  pitch: 63.450096
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

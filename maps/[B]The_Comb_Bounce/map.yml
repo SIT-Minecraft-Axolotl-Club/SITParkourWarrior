@@ -1,0 +1,69 @@
+id: '[B]The_Comb_Bounce'
+title: The Comb Bounce
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -77
+  pos2:
+    x: -233
+    y: 17
+    z: -49
+start:
+  world: PKW
+  x: -237.4786965846002
+  y: 1.0625
+  z: -62.45408766277596
+  yaw: 90.36716
+  pitch: 1.4711263
+end:
+  world: PKW
+  x: -267.4542607346575
+  y: 1.0
+  z: -62.42872093908266
+  yaw: -43.485657
+  pitch: 90.0
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 24
+  - 24
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2
+deployments:
+  '0':
+    id: 329b1f29-755a-4ec6-8325-0616d85d2caf
+    region:
+      world: PKW_0325
+      pos1:
+        x: -192
+        y: 68
+        z: 418
+      pos2:
+        x: -156
+        y: 93
+        z: 446
+    start:
+      world: PKW_0325
+      x: -160.4786965846002
+      y: 77.0625
+      z: 432.545912337224
+      yaw: 90.36716
+      pitch: 1.4711263
+    end:
+      world: PKW_0325
+      x: -190.4542607346575
+      y: 77.0
+      z: 432.57127906091733
+      yaw: -43.485657
+      pitch: 90.0

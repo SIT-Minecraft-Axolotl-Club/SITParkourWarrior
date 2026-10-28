@@ -1,0 +1,38 @@
+id: '[B]The_Timbered_Valley'
+title: The Timbered Valley
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -401
+    y: -8
+    z: -77
+  pos2:
+    x: -365
+    y: 17
+    z: -49
+start:
+  world: PKW
+  x: -369.55341028435254
+  y: 1.0625
+  z: -62.41421123851608
+  yaw: 91.1987
+  pitch: -0.9743126
+end:
+  world: PKW
+  x: -399.5144859859057
+  y: 1.0
+  z: -62.496370349948286
+  yaw: -171.14247
+  pitch: 76.30499
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

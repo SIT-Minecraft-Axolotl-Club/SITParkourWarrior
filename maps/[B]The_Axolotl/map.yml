@@ -1,0 +1,152 @@
+id: '[B]The_Axolotl'
+title: The Axolotl
+difficulty: normal
+node_type: level
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -377
+  pos2:
+    x: -233
+    y: 17
+    z: -349
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 16c05285-9f5e-4350-8450-4ae7e7f147c7
+    region:
+      world: PKW_0325
+      pos1:
+        x: -230
+        y: 68
+        z: 418
+      pos2:
+        x: -194
+        y: 93
+        z: 446
+  '1':
+    id: 6db30be9-ddc4-4736-8e9f-1695fe75cd20
+    region:
+      world: PKW_0325
+      pos1:
+        x: -38
+        y: 67
+        z: 37
+      pos2:
+        x: -2
+        y: 92
+        z: 65
+  '2':
+    id: ba2ff4e9-a829-4928-8df6-ab5d6ca7b9a8
+    region:
+      world: PKW_0325
+      pos1:
+        x: -34
+        y: 75
+        z: 57
+      pos2:
+        x: 2
+        y: 100
+        z: 85
+  '3':
+    id: 0ea87ded-b1f1-48cd-9916-dc21ca8d5b75
+    region:
+      world: PKW_0325
+      pos1:
+        x: -13
+        y: 75
+        z: 46
+      pos2:
+        x: 23
+        y: 100
+        z: 74
+  '4':
+    id: b5ac9501-65c8-4c73-9f52-d5aa884b0d59
+    region:
+      world: PKW_0325
+      pos1:
+        x: -71
+        y: 65
+        z: 579
+      pos2:
+        x: -35
+        y: 90
+        z: 607
+    start:
+      world: PKW_0325
+      x: -39.72590062370588
+      y: 74.0625
+      z: 593.4831641374208
+      yaw: 89.59604
+      pitch: 5.057824
+    end:
+      world: PKW_0325
+      x: -69.58391291464545
+      y: 75.0
+      z: 593.5107740064805
+      yaw: 85.683014
+      pitch: 71.90278
+  '5':
+    id: 71799262-607c-497c-8501-c4ce6f5517c3
+    region:
+      world: PKW_0325
+      pos1:
+        x: -105
+        y: 65
+        z: 579
+      pos2:
+        x: -69
+        y: 90
+        z: 607
+    start:
+      world: PKW_0325
+      x: -73.72590062370588
+      y: 74.0625
+      z: 593.4831641374208
+      yaw: 89.59604
+      pitch: 5.057824
+    end:
+      world: PKW_0325
+      x: -103.58391291464545
+      y: 75.0
+      z: 593.5107740064805
+      yaw: 85.683014
+      pitch: 71.90278
+  '6':
+    id: 2db3c29c-6ab4-438a-97b2-6cbb2e858e19
+    region:
+      world: PKW_0325
+      pos1:
+        x: -141
+        y: 65
+        z: 579
+      pos2:
+        x: -105
+        y: 90
+        z: 607
+    start:
+      world: PKW_0325
+      x: -109.72590062370588
+      y: 74.0625
+      z: 593.4831641374208
+      yaw: 89.59604
+      pitch: 5.057824
+    end:
+      world: PKW_0325
+      x: -139.58391291464545
+      y: 75.0
+      z: 593.5107740064805
+      yaw: 85.683014
+      pitch: 71.90278

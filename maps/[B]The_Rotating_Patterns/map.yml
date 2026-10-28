@@ -1,0 +1,42 @@
+id: '[B]The_Rotating_Patterns'
+title: The Rotating Patterns
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -445
+    y: -8
+    z: -197
+  pos2:
+    x: -409
+    y: 17
+    z: -169
+start:
+  world: PKW
+  x: -413.69274963470133
+  y: 3.0
+  z: -182.56541841468805
+  yaw: 89.08853
+  pitch: -4.1992474
+end:
+  world: PKW
+  x: -443.51036654128063
+  y: 3.0
+  z: -182.48593949752967
+  yaw: -44.26147
+  pitch: 90.0
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 25
+  - 25
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2

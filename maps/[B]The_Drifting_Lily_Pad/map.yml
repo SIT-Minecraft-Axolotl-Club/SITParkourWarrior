@@ -1,0 +1,131 @@
+id: '[B]The_Drifting_Lily_Pad'
+title: The Drifting Lily Pad
+difficulty: normal
+deployed: true
+effects:
+  particles: false
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -401
+    y: -8
+    z: -137
+  pos2:
+    x: -365
+    y: 17
+    z: -109
+start:
+  world: PKW
+  x: -369.5245493981561
+  y: 5.0
+  z: -122.48443229630841
+  yaw: 89.903015
+  pitch: 4.6842303
+end:
+  world: PKW
+  x: -399.49273808072815
+  y: -2.5
+  z: -122.63376641484165
+  yaw: -0.9084778
+  pitch: 83.26779
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  - state_9.schem
+  - state_10.schem
+  - state_11.schem
+  - state_12.schem
+  - state_13.schem
+  - state_14.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+deployments:
+  '0':
+    id: 3b979bb9-0929-4522-8dc5-5bdf1b5d8717
+    region:
+      world: PKW_0325
+      pos1:
+        x: -268
+        y: 65
+        z: 418
+      pos2:
+        x: -232
+        y: 90
+        z: 446
+    start:
+      world: PKW_0325
+      x: -236.52454939815613
+      y: 78.0
+      z: 432.5155677036916
+      yaw: 89.903015
+      pitch: 4.6842303
+    end:
+      world: PKW_0325
+      x: -266.49273808072815
+      y: 70.5
+      z: 432.36623358515834
+      yaw: -0.9084778
+      pitch: 83.26779
+  '1':
+    id: 618be0bf-29a6-48f7-9bc1-eaa7c4d42ded
+    region:
+      world: PKW_cs
+      pos1:
+        x: -90
+        y: 89
+        z: 179
+      pos2:
+        x: -54
+        y: 114
+        z: 207
+    start:
+      world: PKW_cs
+      x: -58.524549398156125
+      y: 102.0
+      z: 193.5155677036916
+      yaw: 89.903015
+      pitch: 4.6842303
+    end:
+      world: PKW_cs
+      x: -88.49273808072815
+      y: 94.5
+      z: 193.36623358515834
+      yaw: -0.9084778
+      pitch: 83.26779

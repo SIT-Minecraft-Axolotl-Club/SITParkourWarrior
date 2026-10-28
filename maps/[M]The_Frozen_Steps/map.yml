@@ -1,0 +1,69 @@
+id: '[M]The_Frozen_Steps'
+title: The Frozen Steps
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 66
+    y: -8
+    z: -37
+  pos2:
+    x: 94
+    y: 17
+    z: 7
+start:
+  world: PKW
+  x: 80.48677979405949
+  y: 1.0
+  z: -31.355921736676134
+  yaw: -0.26454914
+  pitch: 1.6328002
+end:
+  world: PKW
+  x: 80.44055736710597
+  y: 2.0
+  z: 6.560600619745047
+  yaw: -1.7318771
+  pitch: 72.22762
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 35
+  - 25
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2
+deployments:
+  '0':
+    id: cf22f08a-e3c1-4bc3-99ce-8693cfc43333
+    region:
+      world: PKW_0325
+      pos1:
+        x: -397
+        y: 63
+        z: 448
+      pos2:
+        x: -369
+        y: 88
+        z: 492
+    start:
+      world: PKW_0325
+      x: -382.5132202059405
+      y: 72.0
+      z: 453.6440782633239
+      yaw: -0.26454914
+      pitch: 1.6328002
+    end:
+      world: PKW_0325
+      x: -382.55944263289405
+      y: 73.0
+      z: 491.56060061974506
+      yaw: -1.7318771
+      pitch: 72.22762

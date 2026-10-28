@@ -1,0 +1,25 @@
+id: '1'
+title: '1'
+difficulty: easy
+deployed: false
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW_0325
+  pos1:
+    x: 20
+    y: 1
+    z: -7
+  pos2:
+    x: 33
+    y: 1
+    z: -1
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 1
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

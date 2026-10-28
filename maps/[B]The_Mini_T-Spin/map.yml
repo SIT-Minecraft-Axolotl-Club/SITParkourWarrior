@@ -1,0 +1,65 @@
+id: '[B]The_Mini_T-Spin'
+title: The Mini T-Spin
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -401
+    y: -8
+    z: -317
+  pos2:
+    x: -365
+    y: 17
+    z: -289
+start:
+  world: PKW
+  x: -369.5911329269636
+  y: 1.0625
+  z: -302.5357389109382
+  yaw: 89.80403
+  pitch: 2.9527078
+end:
+  world: PKW
+  x: -399.6206614875994
+  y: 1.0
+  z: -302.54999264454665
+  yaw: 21.002577
+  pitch: 74.199646
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: d6ff8ad6-02d2-4335-a49d-a920fc785b6c
+    region:
+      world: PKW_cs
+      pos1:
+        x: -90
+        y: 99
+        z: 474
+      pos2:
+        x: -54
+        y: 124
+        z: 502
+    start:
+      world: PKW_cs
+      x: -58.59113292696361
+      y: 108.0625
+      z: 488.4642610890618
+      yaw: 89.80403
+      pitch: 2.9527078
+    end:
+      world: PKW_cs
+      x: -88.62066148759942
+      y: 108.0
+      z: 488.45000735545335
+      yaw: 21.002577
+      pitch: 74.199646

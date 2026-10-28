@@ -1,0 +1,65 @@
+id: '[M]The_Thin_Pillar''s_Ledge'
+title: The Thin Pillar's Ledge
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -504
+    y: -8
+    z: -37
+  pos2:
+    x: -476
+    y: 17
+    z: -1
+start:
+  world: PKW
+  x: -489.4299128134635
+  y: 3.0
+  z: -31.304947019292616
+  yaw: 0.29901123
+  pitch: 1.0501221
+end:
+  world: PKW
+  x: -489.36457634515193
+  y: 3.0
+  z: -1.2592484491159486
+  yaw: -30.001099
+  pitch: 72.90013
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: b0cef9c7-6d8d-4786-b94f-3ac34631f98d
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 105
+        z: 814
+      pos2:
+        x: 14
+        y: 130
+        z: 850
+    start:
+      world: PKW_cs
+      x: 0.5700463166824079
+      y: 114.0
+      z: 819.6865452185322
+      yaw: 0.0748291
+      pitch: 0.0029668808
+    end:
+      world: PKW_cs
+      x: 0.5435048377163412
+      y: 114.0
+      z: 849.5129238125476
+      yaw: 176.33276
+      pitch: 64.23932

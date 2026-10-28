@@ -1,0 +1,65 @@
+id: '[B]The_Dry_Gaze'
+title: The Dry Gaze
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 68
+    y: -8
+    z: -109
+  pos2:
+    x: 107
+    y: 17
+    z: -81
+start:
+  world: PKW
+  x: 102.44476720291561
+  y: 1.0625
+  z: -94.49537217444795
+  yaw: 90.39868
+  pitch: -2.2862358
+end:
+  world: PKW
+  x: 69.71712680489402
+  y: 2.0
+  z: -94.62571879885672
+  yaw: 76.212524
+  pitch: 90.0
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 610ae91d-a137-4793-953e-376cabadb288
+    region:
+      world: PKW_0325
+      pos1:
+        x: -102
+        y: 67
+        z: 592
+      pos2:
+        x: -63
+        y: 92
+        z: 620
+    start:
+      world: PKW_0325
+      x: -67.55523279708439
+      y: 76.0625
+      z: 606.504627825552
+      yaw: 90.39868
+      pitch: -2.2862358
+    end:
+      world: PKW_0325
+      x: -100.28287319510598
+      y: 77.0
+      z: 606.3742812011433
+      yaw: 76.212524
+      pitch: 90.0

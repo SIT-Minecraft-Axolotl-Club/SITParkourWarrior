@@ -1,0 +1,65 @@
+id: '[B]The_Cracked_Breach'
+title: The Cracked Breach
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 158
+    y: -8
+    z: -141
+  pos2:
+    x: 201
+    y: 17
+    z: -113
+start:
+  world: PKW
+  x: 196.2429902765287
+  y: 1.0
+  z: -126.56010413369019
+  yaw: 90.02399
+  pitch: -2.7687669
+end:
+  world: PKW
+  x: 159.55211880384635
+  y: 1.0
+  z: -126.47869949918574
+  yaw: -110.83685
+  pitch: 65.21745
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 37a5d7b8-8a32-42d1-8dd7-f64fcfe3ef34
+    region:
+      world: PKW_cs
+      pos1:
+        x: -59
+        y: 97
+        z: 25
+      pos2:
+        x: -16
+        y: 122
+        z: 53
+    start:
+      world: PKW_cs
+      x: -20.7570097234713
+      y: 106.0
+      z: 39.43989586630981
+      yaw: 90.02399
+      pitch: -2.7687669
+    end:
+      world: PKW_cs
+      x: -57.447881196153645
+      y: 106.0
+      z: 39.52130050081426
+      yaw: -110.83685
+      pitch: 65.21745

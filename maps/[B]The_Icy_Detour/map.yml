@@ -1,0 +1,65 @@
+id: '[B]The_Icy_Detour'
+title: The Icy Detour
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 66
+    y: -8
+    z: -77
+  pos2:
+    x: 107
+    y: 17
+    z: -49
+start:
+  world: PKW
+  x: 102.43765370807819
+  y: 1.0
+  z: -62.47206366275929
+  yaw: 90.25629
+  pitch: -2.6047592
+end:
+  world: PKW
+  x: 67.56175411934794
+  y: 2.0
+  z: -62.552979284818896
+  yaw: 136.0697
+  pitch: 69.45737
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 8b63083b-cb02-445d-adf4-a5be2e3a0bdc
+    region:
+      world: PKW_0325
+      pos1:
+        x: -349
+        y: 62
+        z: 418
+      pos2:
+        x: -308
+        y: 87
+        z: 446
+    start:
+      world: PKW_0325
+      x: -312.5623462919218
+      y: 71.0
+      z: 432.5279363372407
+      yaw: 90.25629
+      pitch: -2.6047592
+    end:
+      world: PKW_0325
+      x: -347.43824588065206
+      y: 72.0
+      z: 432.4470207151811
+      yaw: 136.0697
+      pitch: 69.45737

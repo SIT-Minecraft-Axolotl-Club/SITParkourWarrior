@@ -1,0 +1,75 @@
+id: '[M]The_Rocky_Cliffs'
+title: The Rocky Cliffs
+difficulty: normal
+deployed: true
+effects:
+  particles: false
+  sound: false
+region:
+  world: PKW
+  pos1:
+    x: 162
+    y: -8
+    z: 62
+  pos2:
+    x: 190
+    y: 17
+    z: 97
+start:
+  world: PKW
+  x: 176.53451161867386
+  y: 1.0
+  z: 67.61187885042999
+  yaw: -0.003112793
+  pitch: -0.32530326
+end:
+  world: PKW
+  x: 176.5121188313733
+  y: 8.0
+  z: 96.54657169229505
+  yaw: -88.36871
+  pitch: 63.421936
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 17
+  - 5
+  - 17
+  - 3
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+deployments:
+  '0':
+    id: 6e57cfcf-4e90-4b26-8ee9-8e85db965e1c
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 105
+        z: 852
+      pos2:
+        x: 14
+        y: 130
+        z: 887
+    start:
+      world: PKW_cs
+      x: 0.5345116186738608
+      y: 114.0
+      z: 857.61187885043
+      yaw: -0.003112793
+      pitch: -0.32530326
+    end:
+      world: PKW_cs
+      x: 0.5121188313733
+      y: 121.0
+      z: 886.5465716922951
+      yaw: -88.36871
+      pitch: 63.421936

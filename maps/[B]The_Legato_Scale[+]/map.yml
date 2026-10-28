@@ -1,0 +1,38 @@
+id: '[B]The_Legato_Scale[+]'
+title: The Legato Scale *
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 194
+    y: -8
+    z: -173
+  pos2:
+    x: 237
+    y: 17
+    z: -145
+start:
+  world: PKW
+  x: 232.3210323971208
+  y: 6.0
+  z: -158.50178357233247
+  yaw: 90.09968
+  pitch: -2.2239175
+end:
+  world: PKW
+  x: 195.28188818779964
+  y: 1.0
+  z: -158.54584246495818
+  yaw: 89.773544
+  pitch: 70.490326
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

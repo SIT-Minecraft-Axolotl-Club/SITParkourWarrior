@@ -1,0 +1,101 @@
+id: '[M]The_Wooden_Chain'
+title: The Wooden Chain
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -164
+    y: -8
+    z: 95
+  pos2:
+    x: -136
+    y: 17
+    z: 131
+start:
+  world: PKW
+  x: -149.5565189034611
+  y: 1.0
+  z: 100.54709271183492
+  yaw: -0.649292
+  pitch: -3.9112444
+end:
+  world: PKW
+  x: -149.60665583806997
+  y: 3.0
+  z: 130.42929497796035
+  yaw: 49.566162
+  pitch: 90.0
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 23
+  - 13
+  - 23
+  - 13
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+deployments:
+  '0':
+    id: e6ca1894-a7d1-467f-a05c-7d4e3dbe5798
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 61
+        z: 112
+      pos2:
+        x: 22
+        y: 86
+        z: 148
+    start:
+      world: PKW_0325
+      x: 8.443481096538903
+      y: 70.0
+      z: 117.54709271183492
+      yaw: -0.649292
+      pitch: -3.9112444
+    end:
+      world: PKW_0325
+      x: 8.393344161930031
+      y: 72.0
+      z: 147.42929497796035
+      yaw: 49.566162
+      pitch: 90.0
+  '1':
+    id: ec5ff584-c79e-421b-b23b-f506588324c3
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 100
+        z: 650
+      pos2:
+        x: 14
+        y: 125
+        z: 686
+    start:
+      world: PKW_cs
+      x: 0.44348109653890333
+      y: 109.0
+      z: 655.5470927118349
+      yaw: -0.649292
+      pitch: -3.9112444
+    end:
+      world: PKW_cs
+      x: 0.3933441619300311
+      y: 111.0
+      z: 685.4292949779604
+      yaw: 49.566162
+      pitch: 90.0

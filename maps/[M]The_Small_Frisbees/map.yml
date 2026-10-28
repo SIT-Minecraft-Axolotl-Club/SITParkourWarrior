@@ -1,0 +1,38 @@
+id: '[M]The_Small_Frisbees'
+title: The Small Frisbees
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -104
+    y: -8
+    z: 95
+  pos2:
+    x: -76
+    y: 17
+    z: 131
+start:
+  world: PKW
+  x: -89.46777131380789
+  y: 1.0625
+  z: 100.61972479612716
+  yaw: 0.32141113
+  pitch: -0.48534334
+end:
+  world: PKW
+  x: -89.60739094429243
+  y: 2.1875
+  z: 130.3786288828514
+  yaw: 1.2842102
+  pitch: 86.57614
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

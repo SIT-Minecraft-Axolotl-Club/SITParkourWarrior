@@ -1,0 +1,65 @@
+id: '[M]The_Woodland_Leaps'
+title: The Woodland Leaps
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 130
+    y: -8
+    z: 53
+  pos2:
+    x: 158
+    y: 17
+    z: 100
+start:
+  world: PKW
+  x: 144.47348621047993
+  y: 6.0
+  z: 58.56748289120035
+  yaw: 0.14317746
+  pitch: -0.14946197
+end:
+  world: PKW
+  x: 144.41831320940315
+  y: 5.0
+  z: 99.53742700606728
+  yaw: -94.65685
+  pitch: 87.90055
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 7281f7fa-45ea-42fd-9461-2642228741cb
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 688
+      pos2:
+        x: 14
+        y: 122
+        z: 735
+    start:
+      world: PKW_cs
+      x: 0.47348621047993333
+      y: 111.0
+      z: 693.5674828912004
+      yaw: 0.14317746
+      pitch: -0.14946197
+    end:
+      world: PKW_cs
+      x: 0.4183132094031521
+      y: 110.0
+      z: 734.5374270060672
+      yaw: -94.65685
+      pitch: 87.90055

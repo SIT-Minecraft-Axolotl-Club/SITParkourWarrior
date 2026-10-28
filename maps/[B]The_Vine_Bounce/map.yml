@@ -1,0 +1,65 @@
+id: '[B]The_Vine_Bounce'
+title: The Vine Bounce
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 206
+    y: -8
+    z: -141
+  pos2:
+    x: 247
+    y: 17
+    z: -113
+start:
+  world: PKW
+  x: 242.3304229757856
+  y: 6.0625
+  z: -126.51368048782695
+  yaw: 89.99997
+  pitch: 2.2501006
+end:
+  world: PKW
+  x: 207.54137139075794
+  y: 6.0
+  z: -126.53370789283113
+  yaw: 178.80017
+  pitch: 76.94999
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: be27a01d-ba0b-4d3a-b31f-f67bcdbdb933
+    region:
+      world: PKW_0325
+      pos1:
+        x: -154
+        y: 63
+        z: 418
+      pos2:
+        x: -113
+        y: 88
+        z: 446
+    start:
+      world: PKW_0325
+      x: -117.66957702421439
+      y: 77.0625
+      z: 432.48631951217305
+      yaw: 89.99997
+      pitch: 2.2501006
+    end:
+      world: PKW_0325
+      x: -152.45862860924206
+      y: 77.0
+      z: 432.4662921071689
+      yaw: 178.80017
+      pitch: 76.94999

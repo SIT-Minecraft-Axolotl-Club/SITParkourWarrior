@@ -1,0 +1,48 @@
+id: '[M]The_Spinning_Scarecrows'
+title: The Spinning Scarecrows
+difficulty: easy
+deployed: true
+effects:
+  particles: false
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -224
+    y: -8
+    z: -37
+  pos2:
+    x: -196
+    y: 17
+    z: -1
+start:
+  world: PKW
+  x: -209.56476173901714
+  y: 1.0625
+  z: -31.531787941689164
+  yaw: 0.08642578
+  pitch: 0.15924032
+end:
+  world: PKW
+  x: -209.42312714058855
+  y: 1.0
+  z: -1.4705731525144434
+  yaw: -64.71356
+  pitch: 77.85923
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 20
+  - 20
+  - 20
+  - 20
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4

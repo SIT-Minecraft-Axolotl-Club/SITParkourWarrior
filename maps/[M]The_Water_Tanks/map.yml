@@ -1,0 +1,66 @@
+id: '[M]The_Water_Tanks'
+title: The Water Tanks
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -284
+    y: -8
+    z: -37
+  pos2:
+    x: -256
+    y: 17
+    z: -1
+start:
+  world: PKW
+  x: -269.4535105012397
+  y: 1.0
+  z: -31.368741831299882
+  yaw: 0.726593
+  pitch: -2.9311328
+end:
+  world: PKW
+  x: -269.50995090480177
+  y: 1.0
+  z: -1.5034713644182778
+  yaw: -9.381592
+  pitch: 52.827343
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 1
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: a9cfa907-e04a-4de0-8ea9-c88d3783497e
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 358
+      pos2:
+        x: 14
+        y: 122
+        z: 394
+    start:
+      world: PKW_cs
+      x: 0.5464894987603088
+      y: 106.0
+      z: 363.6312581687001
+      yaw: 0.726593
+      pitch: -2.9311328
+    end:
+      world: PKW_cs
+      x: 0.4900490951982306
+      y: 106.0
+      z: 393.49652863558174
+      yaw: -9.381592
+      pitch: 52.827343

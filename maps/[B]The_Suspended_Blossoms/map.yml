@@ -1,0 +1,48 @@
+id: '[B]The_Suspended_Blossoms'
+title: The Suspended Blossoms
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -357
+    y: -8
+    z: -77
+  pos2:
+    x: -321
+    y: 17
+    z: -49
+start:
+  world: PKW
+  x: -325.5258028189896
+  y: 1.0625
+  z: -62.50984243287006
+  yaw: 90.70965
+  pitch: 4.5688844
+end:
+  world: PKW
+  x: -355.44181159011674
+  y: 1.0
+  z: -62.58861327720046
+  yaw: 81.25344
+  pitch: 79.40267
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 26
+  - 5
+  - 26
+  - 5
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4

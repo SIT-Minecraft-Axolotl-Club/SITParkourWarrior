@@ -1,0 +1,101 @@
+id: '[M]The_Gate_Switch'
+title: The Gate Switch
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -104
+    y: -8
+    z: 139
+  pos2:
+    x: -76
+    y: 17
+    z: 175
+start:
+  world: PKW
+  x: -89.57918081153068
+  y: 1.0
+  z: 144.559251247394
+  yaw: -0.24940473
+  pitch: 0.16484852
+end:
+  world: PKW
+  x: -89.52350344800527
+  y: 1.0
+  z: 174.67677748150706
+  yaw: -82.41981
+  pitch: 62.607826
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 10
+  - 30
+  - 10
+  - 30
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+deployments:
+  '0':
+    id: 8b86104f-e3e7-4219-8da3-848c3a42fd79
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 63
+        z: 264
+      pos2:
+        x: 22
+        y: 88
+        z: 300
+    start:
+      world: PKW_0325
+      x: 8.420819188469324
+      y: 72.0
+      z: 269.559251247394
+      yaw: -0.24940473
+      pitch: 0.16484852
+    end:
+      world: PKW_0325
+      x: 8.476496551994728
+      y: 72.0
+      z: 299.6767774815071
+      yaw: -82.41981
+      pitch: 62.607826
+  '1':
+    id: a86c7a02-94ae-483c-9bca-2020a53d4a30
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 55
+      pos2:
+        x: 14
+        y: 122
+        z: 91
+    start:
+      world: PKW_cs
+      x: 0.42081918846932354
+      y: 106.0
+      z: 60.559251247394
+      yaw: -0.24940473
+      pitch: 0.16484852
+    end:
+      world: PKW_cs
+      x: 0.4764965519947282
+      y: 106.0
+      z: 90.67677748150706
+      yaw: -82.41981
+      pitch: 62.607826

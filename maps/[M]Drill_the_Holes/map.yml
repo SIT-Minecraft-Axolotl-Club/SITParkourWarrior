@@ -1,0 +1,38 @@
+id: '[M]Drill_the_Holes'
+title: Drill the Holes
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 130
+    y: -8
+    z: 10
+  pos2:
+    x: 158
+    y: 17
+    z: 48
+start:
+  world: PKW
+  x: 144.48205199758658
+  y: 1.0
+  z: 15.624823283241327
+  yaw: -0.31378174
+  pitch: -5.70274
+end:
+  world: PKW
+  x: 144.4535119547837
+  y: 1.0
+  z: 47.48939711355944
+  yaw: -3.737793
+  pitch: 75.32642
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

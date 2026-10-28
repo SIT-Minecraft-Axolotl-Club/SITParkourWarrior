@@ -1,0 +1,81 @@
+id: '[B]The_Rising_Pot'
+title: The Rising Pot
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -357
+    y: -8
+    z: -347
+  pos2:
+    x: -321
+    y: 17
+    z: -319
+start:
+  world: PKW
+  x: -325.6637239712119
+  y: 1.0
+  z: -332.4532850501904
+  yaw: 90.85644
+  pitch: -1.9526607
+end:
+  world: PKW
+  x: -355.5634501058935
+  y: 3.0
+  z: -332.589642346235
+  yaw: 79.44382
+  pitch: 77.119995
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 15
+  - 20
+  - 20
+  - 15
+  - 20
+  - 20
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+deployments:
+  '0':
+    id: c4a304fa-d2fa-45dd-8897-0105ab7225a1
+    region:
+      world: PKW_cs
+      pos1:
+        x: -52
+        y: 97
+        z: 474
+      pos2:
+        x: -16
+        y: 122
+        z: 502
+    start:
+      world: PKW_cs
+      x: -20.66372397121188
+      y: 106.0
+      z: 488.5467149498096
+      yaw: 90.85644
+      pitch: -1.9526607
+    end:
+      world: PKW_cs
+      x: -50.56345010589348
+      y: 108.0
+      z: 488.410357653765
+      yaw: 79.44382
+      pitch: 77.119995

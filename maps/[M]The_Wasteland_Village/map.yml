@@ -1,0 +1,38 @@
+id: '[M]The_Wasteland_Village'
+title: The Wasteland Village
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -344
+    y: -8
+    z: 7
+  pos2:
+    x: -316
+    y: 17
+    z: 43
+start:
+  world: PKW
+  x: -329.5098913922107
+  y: 1.0625
+  z: 12.59119196489976
+  yaw: 0.040527344
+  pitch: 0.49267942
+end:
+  world: PKW
+  x: -329.51650942990113
+  y: 2.0625
+  z: 42.57865037809384
+  yaw: -91.423035
+  pitch: 64.89203
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

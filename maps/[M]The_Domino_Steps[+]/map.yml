@@ -1,0 +1,87 @@
+id: '[M]The_Domino_Steps[+]'
+title: The Domino Steps *
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 226
+    y: -8
+    z: -37
+  pos2:
+    x: 254
+    y: 17
+    z: 3
+start:
+  world: PKW
+  x: 240.51363746229978
+  y: 1.0
+  z: -31.466688970502087
+  yaw: 0.063812256
+  pitch: 2.7677562
+end:
+  world: PKW
+  x: 240.40097786907253
+  y: 1.0
+  z: 2.460813341854954
+  yaw: 5.9329834
+  pitch: 83.95994
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+deployments:
+  '0':
+    id: 468b939d-245b-4aba-a9df-14be25643d95
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 100
+        z: 542
+      pos2:
+        x: 14
+        y: 125
+        z: 582
+    start:
+      world: PKW_cs
+      x: 0.5136374622997835
+      y: 109.0
+      z: 547.5333110294979
+      yaw: 0.063812256
+      pitch: 2.7677562
+    end:
+      world: PKW_cs
+      x: 0.4009778690725341
+      y: 109.0
+      z: 581.460813341855
+      yaw: 5.9329834
+      pitch: 83.95994

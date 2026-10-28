@@ -1,0 +1,75 @@
+id: '[B]The_Floating_Grid'
+title: The Floating Grid
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -357
+    y: -8
+    z: -227
+  pos2:
+    x: -321
+    y: 17
+    z: -199
+start:
+  world: PKW
+  x: -325.6769111371479
+  y: 5.0625
+  z: -212.50197304819557
+  yaw: 89.85614
+  pitch: -1.3501363
+end:
+  world: PKW
+  x: -355.5140959799117
+  y: 3.0
+  z: -212.47618680144964
+  yaw: -29.243896
+  pitch: 53.399937
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 25
+  - 25
+  - 25
+  - 25
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+deployments:
+  '0':
+    id: 55131995-e168-4fa6-90d1-63d37c100468
+    region:
+      world: PKW
+      pos1:
+        x: -114
+        y: 58
+        z: -75
+      pos2:
+        x: -78
+        y: 83
+        z: -47
+    start:
+      world: PKW
+      x: -82.6769111371479
+      y: 71.0625
+      z: -60.501973048195566
+      yaw: 89.85614
+      pitch: -1.3501363
+    end:
+      world: PKW
+      x: -112.5140959799117
+      y: 69.0
+      z: -60.47618680144964
+      yaw: -29.243896
+      pitch: 53.399937

@@ -1,0 +1,78 @@
+id: '[B]The_Desolate_Columns'
+title: The Desolate Columns
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+node_type: level
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -317
+  pos2:
+    x: -233
+    y: 17
+    z: -289
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 2049ac00-67a9-4674-8c22-e126eba4e889
+    region:
+      world: PKW_0325
+      pos1:
+        x: -49
+        y: 66
+        z: 307
+      pos2:
+        x: -13
+        y: 91
+        z: 335
+    start:
+      world: PKW_0325
+      x: -17.617847405457354
+      y: 74.0
+      z: 321.51295394439745
+      yaw: 90.35955
+      pitch: -4.235268
+    end:
+      world: PKW_0325
+      x: -47.513071782264035
+      y: 77.0
+      z: 321.48719667429344
+      yaw: 83.69159
+      pitch: 72.2288
+  '1':
+    id: 5ed4c2ed-6d89-497d-bb3e-d10a405b319b
+    region:
+      world: PKW_0325
+      pos1:
+        x: -460
+        y: 65
+        z: 418
+      pos2:
+        x: -424
+        y: 90
+        z: 446
+    start:
+      world: PKW_0325
+      x: -428.6178474054574
+      y: 73.0
+      z: 432.51295394439745
+      yaw: 90.35955
+      pitch: -4.235268
+    end:
+      world: PKW_0325
+      x: -458.51307178226403
+      y: 76.0
+      z: 432.48719667429344
+      yaw: 83.69159
+      pitch: 72.2288

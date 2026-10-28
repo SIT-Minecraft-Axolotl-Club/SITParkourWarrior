@@ -1,0 +1,38 @@
+id: '[B]The_L_Joint'
+title: The L Joint
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -77
+  pos2:
+    x: -277
+    y: 17
+    z: -49
+start:
+  world: PKW
+  x: -281.4207808362114
+  y: 1.0625
+  z: -62.52796296849453
+  yaw: 90.05747
+  pitch: 0.6560037
+end:
+  world: PKW
+  x: -311.46167478400304
+  y: 1.0
+  z: -62.49243744928908
+  yaw: 79.29706
+  pitch: 60.327366
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

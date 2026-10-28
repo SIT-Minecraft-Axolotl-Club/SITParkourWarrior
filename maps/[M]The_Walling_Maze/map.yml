@@ -1,0 +1,72 @@
+id: '[M]The_Walling_Maze'
+title: The Walling Maze
+difficulty: extreme
+deployed: true
+effects:
+  particles: false
+  sound: false
+region:
+  world: PKW
+  pos1:
+    x: -264
+    y: -8
+    z: 51
+  pos2:
+    x: -236
+    y: 17
+    z: 87
+start:
+  world: PKW
+  x: -249.5837734820601
+  y: 3.0
+  z: 56.58910598994054
+  yaw: 9.765625E-4
+  pitch: 0.15037943
+end:
+  world: PKW
+  x: -249.52183367768697
+  y: 3.0
+  z: 86.58154464362839
+  yaw: -168.30017
+  pitch: 15.300385
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 7
+  - 2
+  - 1
+  - 9
+  - 1
+  - 9
+  - 1
+  - 2
+  - 7
+  - 1
+  - 9
+  - 1
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  - state_9.schem
+  - state_10.schem
+  - state_11.schem
+  - state_12.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12

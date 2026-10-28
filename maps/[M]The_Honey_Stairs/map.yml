@@ -1,0 +1,65 @@
+id: '[M]The_Honey_Stairs'
+title: The Honey Stairs
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 98
+    y: -8
+    z: -37
+  pos2:
+    x: 126
+    y: 17
+    z: 5
+start:
+  world: PKW
+  x: 112.40242937310013
+  y: 1.0625
+  z: -31.2894189605623
+  yaw: -0.08123779
+  pitch: -1.7895262
+end:
+  world: PKW
+  x: 112.5500548368373
+  y: 2.0
+  z: 4.537858857865128
+  yaw: -97.08765
+  pitch: 71.08775
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 2ad6da3b-477a-422a-857d-fa17ad5dd96e
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 96
+        z: 209
+      pos2:
+        x: 14
+        y: 121
+        z: 251
+    start:
+      world: PKW_cs
+      x: 0.4024293731001336
+      y: 105.0625
+      z: 214.7105810394377
+      yaw: -0.08123779
+      pitch: -1.7895262
+    end:
+      world: PKW_cs
+      x: 0.5500548368373046
+      y: 106.0
+      z: 250.53785885786513
+      yaw: -97.08765
+      pitch: 71.08775

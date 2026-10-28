@@ -1,0 +1,38 @@
+id: '[B]The_Frame_Sprint'
+title: The Frame Sprint
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 69
+    y: -8
+    z: -141
+  pos2:
+    x: 107
+    y: 17
+    z: -113
+start:
+  world: PKW
+  x: 102.43988319907564
+  y: 1.0625
+  z: -126.44120821507374
+  yaw: 90.590576
+  pitch: -0.48569727
+end:
+  world: PKW
+  x: 70.4184533015938
+  y: 3.0
+  z: -126.41592304491755
+  yaw: 68.74536
+  pitch: 64.07673
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

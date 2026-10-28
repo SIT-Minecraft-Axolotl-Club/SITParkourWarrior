@@ -1,0 +1,38 @@
+id: '[B]The_Wild_Weeds'
+title: The Wild Weeds
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -107
+  pos2:
+    x: -233
+    y: 17
+    z: -79
+start:
+  world: PKW
+  x: -237.39426726833364
+  y: 1.0625
+  z: -92.51035431231838
+  yaw: 90.7157
+  pitch: -3.5833192
+end:
+  world: PKW
+  x: -267.48319662402304
+  y: 5.0
+  z: -92.41967593416979
+  yaw: -76.23352
+  pitch: 73.69636
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

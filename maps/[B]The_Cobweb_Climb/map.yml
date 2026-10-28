@@ -1,0 +1,38 @@
+id: '[B]The_Cobweb_Climb'
+title: The Cobweb Climb
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -317
+  pos2:
+    x: -277
+    y: 17
+    z: -289
+start:
+  world: PKW
+  x: -281.52321861812607
+  y: 0.0
+  z: -302.47357948699977
+  yaw: 89.8728
+  pitch: -0.65610707
+end:
+  world: PKW
+  x: -311.4161402750115
+  y: 7.0
+  z: -302.5108504881014
+  yaw: 179.70569
+  pitch: 37.33141
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

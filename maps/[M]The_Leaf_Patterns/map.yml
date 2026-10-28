@@ -1,0 +1,38 @@
+id: '[M]The_Leaf_Patterns'
+title: The Leaf Patterns
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 130
+    y: -8
+    z: -37
+  pos2:
+    x: 158
+    y: 17
+    z: 5
+start:
+  world: PKW
+  x: 144.50176294269147
+  y: 1.0625
+  z: -31.450618734131737
+  yaw: 0.69104004
+  pitch: -3.2575004
+end:
+  world: PKW
+  x: 144.45067371666659
+  y: 1.0
+  z: 4.553672031634992
+  yaw: -4.689209
+  pitch: 75.3261
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

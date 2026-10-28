@@ -1,0 +1,91 @@
+id: '[M]The_Resin_Harvest'
+title: The Resin Harvest
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -254
+    y: -8
+    z: -37
+  pos2:
+    x: -226
+    y: 17
+    z: -1
+start:
+  world: PKW
+  x: -239.5633169492474
+  y: 1.0
+  z: -31.38706800582992
+  yaw: 0.34680176
+  pitch: 2.296183
+end:
+  world: PKW
+  x: -239.51939366317973
+  y: 1.0
+  z: -1.479827063763743
+  yaw: 106.81067
+  pitch: 59.685043
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 2d93c81a-164e-4f08-898f-d85a6ef95d2a
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 63
+        z: 188
+      pos2:
+        x: 22
+        y: 88
+        z: 224
+    start:
+      world: PKW_0325
+      x: 8.436683050752606
+      y: 72.0
+      z: 193.61293199417008
+      yaw: 0.34680176
+      pitch: 2.296183
+    end:
+      world: PKW_0325
+      x: 8.480606336820273
+      y: 72.0
+      z: 223.52017293623626
+      yaw: 106.81067
+      pitch: 59.685043
+  '1':
+    id: b112118a-c50a-4aac-90c7-496b0a85968b
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 291
+      pos2:
+        x: 14
+        y: 122
+        z: 327
+    start:
+      world: PKW_cs
+      x: 0.43668305075260605
+      y: 106.0
+      z: 296.6129319941701
+      yaw: 0.34680176
+      pitch: 2.296183
+    end:
+      world: PKW_cs
+      x: 0.4806063368202729
+      y: 106.0
+      z: 326.52017293623624
+      yaw: 106.81067
+      pitch: 59.685043

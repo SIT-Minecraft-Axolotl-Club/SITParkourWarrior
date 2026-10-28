@@ -1,0 +1,48 @@
+id: '[B]The_Alternate_Blocks'
+title: The Alternate Blocks
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 112
+    y: -8
+    z: -237
+  pos2:
+    x: 167
+    y: 17
+    z: -209
+start:
+  world: PKW
+  x: 162.400730066895
+  y: 3.0
+  z: -222.44061860767962
+  yaw: 90.44794
+  pitch: -2.850209
+end:
+  world: PKW
+  x: 113.26731514607577
+  y: 3.0
+  z: -222.53713910133777
+  yaw: 95.54791
+  pitch: 69.29982
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 7
+  - 12
+  - 7
+  - 12
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4

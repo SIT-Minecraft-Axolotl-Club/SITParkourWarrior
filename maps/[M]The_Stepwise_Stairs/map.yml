@@ -1,0 +1,99 @@
+id: '[M]The_Stepwise_Stairs'
+title: The Stepwise Stairs
+difficulty: easy
+deployed: true
+effects:
+  particles: false
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 162
+    y: -8
+    z: 10
+  pos2:
+    x: 190
+    y: 17
+    z: 57
+start:
+  world: PKW
+  x: 176.49277023368126
+  y: 1.0
+  z: 15.681501634696628
+  yaw: 0.41506958
+  pitch: 3.1565006
+end:
+  world: PKW
+  x: 176.55441922716605
+  y: -1.0
+  z: 56.45821947271181
+  yaw: -136.04645
+  pitch: 84.83784
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  - state_9.schem
+  - state_10.schem
+  - state_11.schem
+  - state_12.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+deployments:
+  '0':
+    id: 63d2bbdd-e93e-4341-87e1-8d099d08a566
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 98
+        z: 131
+      pos2:
+        x: 14
+        y: 123
+        z: 178
+    start:
+      world: PKW_cs
+      x: 0.49277023368125583
+      y: 107.0
+      z: 136.68150163469662
+      yaw: 0.41506958
+      pitch: 3.1565006
+    end:
+      world: PKW_cs
+      x: 0.5544192271660506
+      y: 105.0
+      z: 177.45821947271182
+      yaw: -136.04645
+      pitch: 84.83784

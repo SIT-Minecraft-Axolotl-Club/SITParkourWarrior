@@ -1,0 +1,69 @@
+id: '[M]Two-Tone_Maze[+]'
+title: Two-Tone Maze *
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -444
+    y: -8
+    z: 51
+  pos2:
+    x: -416
+    y: 17
+    z: 87
+start:
+  world: PKW
+  x: -429.4988082505598
+  y: 1.0
+  z: 56.634369619797745
+  yaw: 4.7993684
+  pitch: 40.800076
+end:
+  world: PKW
+  x: -429.550795786546
+  y: 1.0
+  z: 86.57630514426663
+  yaw: -85.650696
+  pitch: 70.95011
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 50
+  - 30
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2
+deployments:
+  '0':
+    id: 7bf3b679-22a3-4311-ba37-aeb726285dc3
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 63
+        z: 517
+      pos2:
+        x: 22
+        y: 88
+        z: 553
+    start:
+      world: PKW_0325
+      x: 8.501191749440181
+      y: 72.0
+      z: 522.6343696197978
+      yaw: 4.7993684
+      pitch: 40.800076
+    end:
+      world: PKW_0325
+      x: 8.449204213453982
+      y: 72.0
+      z: 552.5763051442666
+      yaw: -85.650696
+      pitch: 70.95011

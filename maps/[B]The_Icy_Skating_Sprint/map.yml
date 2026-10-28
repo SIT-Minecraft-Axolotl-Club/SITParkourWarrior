@@ -1,0 +1,65 @@
+id: '[B]The_Icy_Skating_Sprint'
+title: The Icy Skating Sprint
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 112
+    y: -8
+    z: -77
+  pos2:
+    x: 159
+    y: 17
+    z: -49
+start:
+  world: PKW
+  x: 154.50916936881708
+  y: 3.0
+  z: -62.461553173140224
+  yaw: 90.14014
+  pitch: -1.7900629
+end:
+  world: PKW
+  x: 113.52757758633136
+  y: -4.0
+  z: -62.5269651091752
+  yaw: 52.804443
+  pitch: 71.250275
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: ff24053e-baf7-4437-a56f-d71b61952a98
+    region:
+      world: PKW_cs
+      pos1:
+        x: -139
+        y: 97
+        z: 328
+      pos2:
+        x: -92
+        y: 122
+        z: 356
+    start:
+      world: PKW_cs
+      x: -96.49083063118292
+      y: 108.0
+      z: 342.5384468268598
+      yaw: 90.14014
+      pitch: -1.7900629
+    end:
+      world: PKW_cs
+      x: -137.47242241366865
+      y: 101.0
+      z: 342.4730348908248
+      yaw: 52.804443
+      pitch: 71.250275

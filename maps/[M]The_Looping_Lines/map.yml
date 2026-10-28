@@ -1,0 +1,99 @@
+id: '[M]The_Looping_Lines'
+title: The Looping Lines
+difficulty: hard
+deployed: true
+effects:
+  particles: false
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 258
+    y: -8
+    z: 13
+  pos2:
+    x: 286
+    y: 17
+    z: 53
+start:
+  world: PKW
+  x: 272.3759907444823
+  y: 1.0
+  z: 18.562539623376892
+  yaw: -0.13415527
+  pitch: 0.6559501
+end:
+  world: PKW
+  x: 272.42281471716603
+  y: 1.0
+  z: 52.644878253568244
+  yaw: -14.644287
+  pitch: 47.610474
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  - state_9.schem
+  - state_10.schem
+  - state_11.schem
+  - state_12.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+deployments:
+  '0':
+    id: bccef020-9804-46c5-81b2-cbbdf487a633
+    region:
+      world: PKW_cs
+      pos1:
+        x: -45
+        y: 105
+        z: 814
+      pos2:
+        x: -17
+        y: 130
+        z: 854
+    start:
+      world: PKW_cs
+      x: -30.624009255517706
+      y: 114.0
+      z: 819.5625396233769
+      yaw: -0.13415527
+      pitch: 0.6559501
+    end:
+      world: PKW_cs
+      x: -30.577185282833966
+      y: 114.0
+      z: 853.6448782535682
+      yaw: -14.644287
+      pitch: 47.610474

@@ -1,0 +1,72 @@
+id: '[M]The_Windswept_Pillars'
+title: The Windswept Pillars
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -344
+    y: -8
+    z: -37
+  pos2:
+    x: -316
+    y: 17
+    z: -1
+start:
+  world: PKW
+  x: -329.55592872361586
+  y: 1.0
+  z: -31.45359928252452
+  yaw: -0.15307617
+  pitch: -3.5828753
+end:
+  world: PKW
+  x: -329.4593170860113
+  y: 4.0
+  z: -1.4371278834376635
+  yaw: -71.72601
+  pitch: 65.21852
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 45
+  - 15
+  - 25
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+deployments:
+  '0':
+    id: e782319a-e4ef-4bd0-96cf-72ee56849cb4
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 504
+      pos2:
+        x: 14
+        y: 122
+        z: 540
+    start:
+      world: PKW_cs
+      x: 0.4440712763841361
+      y: 106.0
+      z: 509.5464007174755
+      yaw: -0.15307617
+      pitch: -3.5828753
+    end:
+      world: PKW_cs
+      x: 0.5406829139886895
+      y: 109.0
+      z: 539.5628721165623
+      yaw: -71.72601
+      pitch: 65.21852

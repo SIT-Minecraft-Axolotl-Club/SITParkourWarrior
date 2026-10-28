@@ -1,0 +1,65 @@
+id: '[B]The_Aqueduct_Pass'
+title: The Aqueduct Pass
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -137
+  pos2:
+    x: -277
+    y: 17
+    z: -109
+start:
+  world: PKW
+  x: -281.51020761599364
+  y: 1.0625
+  z: -122.55127999564438
+  yaw: 89.567986
+  pitch: -1.3003644
+end:
+  world: PKW
+  x: -311.6056649252499
+  y: -2.0
+  z: -122.5191831906168
+  yaw: -6.460596
+  pitch: 65.05547
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: c2db0116-5734-4fcd-b666-741a1d0c4233
+    region:
+      world: PKW_cs
+      pos1:
+        x: -52
+        y: 96
+        z: 179
+      pos2:
+        x: -16
+        y: 121
+        z: 207
+    start:
+      world: PKW_cs
+      x: -20.510207615993636
+      y: 105.0625
+      z: 193.4487200043556
+      yaw: 89.567986
+      pitch: -1.3003644
+    end:
+      world: PKW_cs
+      x: -50.605664925249926
+      y: 102.0
+      z: 193.4808168093832
+      yaw: -6.460596
+      pitch: 65.05547

@@ -1,0 +1,65 @@
+id: '[B]The_Rapids_Forks'
+title: The Rapids Forks
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -257
+  pos2:
+    x: -233
+    y: 17
+    z: -229
+start:
+  world: PKW
+  x: -237.60209930226318
+  y: 1.0625
+  z: -242.49543389826584
+  yaw: 90.53119
+  pitch: -3.2569363
+end:
+  world: PKW
+  x: -267.5852986996326
+  y: 2.0
+  z: -242.52056576932415
+  yaw: 95.259155
+  pitch: 67.98995
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 7996c155-9364-4631-a0d7-9c5ddec09d7b
+    region:
+      world: PKW_cs
+      pos1:
+        x: -90
+        y: 98
+        z: 328
+      pos2:
+        x: -54
+        y: 123
+        z: 356
+    start:
+      world: PKW_cs
+      x: -58.602099302263184
+      y: 107.0625
+      z: 342.50456610173416
+      yaw: 90.53119
+      pitch: -3.2569363
+    end:
+      world: PKW_cs
+      x: -88.58529869963257
+      y: 108.0
+      z: 342.47943423067585
+      yaw: 95.259155
+      pitch: 67.98995

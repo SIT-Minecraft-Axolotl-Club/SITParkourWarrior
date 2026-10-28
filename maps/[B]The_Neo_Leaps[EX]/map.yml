@@ -1,0 +1,69 @@
+id: '[B]The_Neo_Leaps[EX]'
+title: The Neo Leaps
+difficulty: extreme
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -489
+    y: -8
+    z: -77
+  pos2:
+    x: -453
+    y: 17
+    z: -49
+start:
+  world: PKW
+  x: -457.4740996062342
+  y: 1.0625
+  z: -62.54244232983768
+  yaw: 90.05548
+  pitch: 0.8186058
+end:
+  world: PKW
+  x: -487.4275628918341
+  y: 1.0
+  z: -62.40249440945237
+  yaw: -178.31781
+  pitch: 85.76065
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 25
+  - 25
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2
+deployments:
+  '0':
+    id: 70984e78-7c7e-4243-951c-3eddac5331fa
+    region:
+      world: PKW_cs
+      pos1:
+        x: -128
+        y: 101
+        z: 621
+      pos2:
+        x: -92
+        y: 126
+        z: 649
+    start:
+      world: PKW_cs
+      x: -96.47409960623418
+      y: 110.0625
+      z: 635.4575576701624
+      yaw: 90.05548
+      pitch: 0.8186058
+    end:
+      world: PKW_cs
+      x: -126.4275628918341
+      y: 110.0
+      z: 635.5975055905476
+      yaw: -178.31781
+      pitch: 85.76065

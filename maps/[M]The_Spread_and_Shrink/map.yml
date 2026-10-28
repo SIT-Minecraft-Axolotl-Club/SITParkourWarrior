@@ -1,0 +1,90 @@
+id: '[M]The_Spread_and_Shrink'
+title: The Spread and Shrink
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -114
+    y: -8
+    z: 7
+  pos2:
+    x: -86
+    y: 17
+    z: 43
+start:
+  world: PKW
+  x: -99.44581104967408
+  y: 3.0
+  z: 12.496214124579032
+  yaw: -0.15203857
+  pitch: -0.60027987
+end:
+  world: PKW
+  x: -99.47277945382194
+  y: 3.0
+  z: 42.497807419829925
+  yaw: 144.59766
+  pitch: 57.29971
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 10
+  - 10
+  - 25
+  - 10
+  - 10
+  - 25
+  - 10
+  - 10
+  - 25
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  - state_9.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+deployments:
+  '0':
+    id: 9e75af05-41f1-4aad-94f9-50c8d3a440ba
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 61
+        z: 479
+      pos2:
+        x: 22
+        y: 86
+        z: 515
+    start:
+      world: PKW_0325
+      x: 8.554188950325923
+      y: 72.0
+      z: 484.496214124579
+      yaw: -0.15203857
+      pitch: -0.60027987
+    end:
+      world: PKW_0325
+      x: 8.527220546178057
+      y: 72.0
+      z: 514.4978074198299
+      yaw: 144.59766
+      pitch: 57.29971

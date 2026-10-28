@@ -1,0 +1,65 @@
+id: '[B]The_Cavern_Sprint[+]'
+title: The Cavern Sprint *
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -437
+  pos2:
+    x: -277
+    y: 17
+    z: -409
+start:
+  world: PKW
+  x: -281.4728201701956
+  y: 4.0
+  z: -422.4292860760868
+  yaw: 90.85986
+  pitch: 4.500062
+end:
+  world: PKW
+  x: -311.43838830502574
+  y: 4.0
+  z: -422.5407458549684
+  yaw: 115.012695
+  pitch: 87.150154
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 7715ec7f-ec2d-41eb-9969-207b3ad1f632
+    region:
+      world: PKW
+      pos1:
+        x: -76
+        y: 59
+        z: -75
+      pos2:
+        x: -40
+        y: 84
+        z: -47
+    start:
+      world: PKW
+      x: -44.472820170195575
+      y: 71.0
+      z: -60.42928607608678
+      yaw: 90.85986
+      pitch: 4.500062
+    end:
+      world: PKW
+      x: -74.43838830502574
+      y: 71.0
+      z: -60.54074585496841
+      yaw: 115.012695
+      pitch: 87.150154

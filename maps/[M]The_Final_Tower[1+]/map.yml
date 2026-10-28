@@ -1,0 +1,65 @@
+id: '[M]The_Final_Tower[1+]'
+title: The Final Tower *
+difficulty: extreme
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 322
+    y: -8
+    z: -37
+  pos2:
+    x: 350
+    y: 27
+    z: -12
+start:
+  world: PKW
+  x: 336.4270654631035
+  y: 1.0
+  z: -31.465795850305792
+  yaw: -0.040283203
+  pitch: -8.999913
+end:
+  world: PKW
+  x: 336.4064825369542
+  y: 23.0
+  z: -16.30624588574365
+  yaw: -167.15247
+  pitch: 69.583694
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: ad3d1d2c-be4a-432d-87f3-c4f54489a220
+    region:
+      world: PKW_cs
+      pos1:
+        x: -45
+        y: 105
+        z: 856
+      pos2:
+        x: -17
+        y: 140
+        z: 881
+    start:
+      world: PKW_cs
+      x: -30.572934536896526
+      y: 114.0
+      z: 861.5342041496942
+      yaw: -0.040283203
+      pitch: -8.999913
+    end:
+      world: PKW_cs
+      x: -30.593517463045828
+      y: 136.0
+      z: 876.6937541142563
+      yaw: -167.15247
+      pitch: 69.583694

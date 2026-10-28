@@ -1,0 +1,65 @@
+id: '[M]The_Upwelling'
+title: The Upwelling
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -284
+    y: -8
+    z: 7
+  pos2:
+    x: -256
+    y: 17
+    z: 43
+start:
+  world: PKW
+  x: -269.44250845369663
+  y: 1.0625
+  z: 12.605718757159377
+  yaw: 0.22302246
+  pitch: -0.9746741
+end:
+  world: PKW
+  x: -269.505916898542
+  y: 1.0
+  z: 42.549016372271396
+  yaw: 162.46008
+  pitch: 79.565315
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 7bed3d25-a4b5-4b72-9e22-b9e9221d9b9a
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 63
+        z: 302
+      pos2:
+        x: 22
+        y: 88
+        z: 338
+    start:
+      world: PKW_0325
+      x: 8.557491546303368
+      y: 72.0625
+      z: 307.60571875715937
+      yaw: 0.22302246
+      pitch: -0.9746741
+    end:
+      world: PKW_0325
+      x: 8.494083101457989
+      y: 72.0
+      z: 337.5490163722714
+      yaw: 162.46008
+      pitch: 79.565315

@@ -1,0 +1,38 @@
+id: '[M]The_Folded_Cherry_Stairs'
+title: The Folded Cherry Stairs
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -204
+    y: -8
+    z: 139
+  pos2:
+    x: -176
+    y: 17
+    z: 175
+start:
+  world: PKW
+  x: -189.48934248017167
+  y: 6.0
+  z: 144.66404486805504
+  yaw: 0.29882812
+  pitch: 1.2002499
+end:
+  world: PKW
+  x: -189.4194793981332
+  y: 9.0
+  z: 174.40646147909
+  yaw: -162.90125
+  pitch: 57.000282
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

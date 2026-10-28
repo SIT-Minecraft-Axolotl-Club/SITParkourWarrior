@@ -1,0 +1,48 @@
+id: '[B]The_Tortuous_Swap[+]'
+title: The Tortuous Swap *
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -357
+    y: -8
+    z: -227
+  pos2:
+    x: -321
+    y: 17
+    z: -199
+start:
+  world: PKW
+  x: -325.69790344507277
+  y: 1.0
+  z: -212.54156317177538
+  yaw: 90.00188
+  pitch: -1.9498237
+end:
+  world: PKW
+  x: -355.591801431696
+  y: 1.0
+  z: -212.52185928279383
+  yaw: 88.05186
+  pitch: 71.250175
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 10
+  - 25
+  - 10
+  - 25
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4

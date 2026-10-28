@@ -1,0 +1,65 @@
+id: '[B]The_Spiral_and_Down'
+title: The Spiral and Down
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -197
+  pos2:
+    x: -233
+    y: 17
+    z: -169
+start:
+  world: PKW
+  x: -237.54477858066588
+  y: 1.0625
+  z: -182.52733166644776
+  yaw: 90.235535
+  pitch: 0.6560559
+end:
+  world: PKW
+  x: -267.53703036581993
+  y: 1.0
+  z: -182.5009914599336
+  yaw: 90.23569
+  pitch: 68.96833
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: a59954e1-b7ca-4aa7-9e84-d4234ff41b45
+    region:
+      world: PKW_0325
+      pos1:
+        x: -306
+        y: 62
+        z: 418
+      pos2:
+        x: -270
+        y: 87
+        z: 446
+    start:
+      world: PKW_0325
+      x: -274.5447785806659
+      y: 71.0625
+      z: 432.47266833355224
+      yaw: 90.235535
+      pitch: 0.6560559
+    end:
+      world: PKW_0325
+      x: -304.53703036581993
+      y: 71.0
+      z: 432.49900854006637
+      yaw: 90.23569
+      pitch: 68.96833

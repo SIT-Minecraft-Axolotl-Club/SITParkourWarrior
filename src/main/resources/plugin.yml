@@ -1,0 +1,20 @@
+name: SITParkourWarrior
+version: '1.0'
+main: club.sitmc.sitParkourWarrior.SITParkourWarrior
+api-version: '1.21'
+prefix: SIT-Parkour
+load: STARTUP
+authors: [ SITMC ]
+description: Dynamic parkour maps with sessions and dynamic schematics
+website: www.sitmc.club
+depend: [WorldEdit]
+commands:
+  sitpkw:
+    description: DynamicParkour main command
+    usage: /sitpkw
+    aliases: [dp, dynamicparkour]
+permissions:
+  dynamicparkour.admin:
+    default: op
+  dynamicparkour.play:
+    default: true

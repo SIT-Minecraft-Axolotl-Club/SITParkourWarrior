@@ -1,0 +1,99 @@
+id: '[M]The_Ice-Spike_Rings'
+title: The Ice-Spike Rings
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -284
+    y: -8
+    z: 51
+  pos2:
+    x: -256
+    y: 17
+    z: 87
+start:
+  world: PKW
+  x: -269.4769161449502
+  y: 1.0
+  z: 56.51849610449969
+  yaw: -0.26791382
+  pitch: -3.5830886
+end:
+  world: PKW
+  x: -269.4814250716045
+  y: 1.0
+  z: 86.6033129145703
+  yaw: -30.103638
+  pitch: 56.251286
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  - state_9.schem
+  - state_10.schem
+  - state_11.schem
+  - state_12.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+deployments:
+  '0':
+    id: ad47ebcc-cd9d-41da-85b3-99aebc81ab17
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 437
+      pos2:
+        x: 14
+        y: 122
+        z: 473
+    start:
+      world: PKW_cs
+      x: 0.5230838550497765
+      y: 106.0
+      z: 442.5184961044997
+      yaw: -0.26791382
+      pitch: -3.5830886
+    end:
+      world: PKW_cs
+      x: 0.5185749283954806
+      y: 106.0
+      z: 472.6033129145703
+      yaw: -30.103638
+      pitch: 56.251286

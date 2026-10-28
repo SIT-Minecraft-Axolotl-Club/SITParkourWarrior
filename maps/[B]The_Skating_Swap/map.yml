@@ -1,0 +1,48 @@
+id: '[B]The_Skating_Swap'
+title: The Skating Swap
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -287
+  pos2:
+    x: -277
+    y: 17
+    z: -259
+start:
+  world: PKW
+  x: -281.773067616293
+  y: 4.0
+  z: -272.494742589201
+  yaw: 90.30076
+  pitch: 0.60009897
+end:
+  world: PKW
+  x: -311.4716060669964
+  y: 4.0
+  z: -272.5061289265804
+  yaw: 92.40081
+  pitch: 87.75008
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 25
+  - 10
+  - 25
+  - 10
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4

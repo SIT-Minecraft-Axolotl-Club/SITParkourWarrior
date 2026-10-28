@@ -1,0 +1,75 @@
+id: '[B]The_Enduring_Spin'
+title: The Enduring Spin
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -357
+    y: -8
+    z: -107
+  pos2:
+    x: -321
+    y: 17
+    z: -79
+start:
+  world: PKW
+  x: -325.7602497586889
+  y: 1.0625
+  z: -92.55708456075114
+  yaw: 89.84314
+  pitch: -3.149257
+end:
+  world: PKW
+  x: -355.47606655015966
+  y: 1.0
+  z: -92.54971874563836
+  yaw: 90.443726
+  pitch: 80.10077
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 14
+  - 14
+  - 14
+  - 14
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+deployments:
+  '0':
+    id: b776f849-07eb-4852-ae9a-0902928f7c73
+    region:
+      world: PKW_cs
+      pos1:
+        x: -52
+        y: 100
+        z: 621
+      pos2:
+        x: -16
+        y: 125
+        z: 649
+    start:
+      world: PKW_cs
+      x: -20.76024975868887
+      y: 109.0625
+      z: 635.4429154392488
+      yaw: 89.84314
+      pitch: -3.149257
+    end:
+      world: PKW_cs
+      x: -50.47606655015966
+      y: 109.0
+      z: 635.4502812543617
+      yaw: 90.443726
+      pitch: 80.10077

@@ -1,0 +1,78 @@
+id: '[B]The_Neo_Cross'
+title: The Neo Cross
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 75
+    y: -8
+    z: -269
+  pos2:
+    x: 107
+    y: 17
+    z: -241
+start:
+  world: PKW
+  x: 102.22069503925222
+  y: 3.0
+  z: -254.6047438570284
+  yaw: 89.24994
+  pitch: -3.150035
+end:
+  world: PKW
+  x: 76.38129161010768
+  y: 3.0
+  z: -254.64366982191981
+  yaw: 90.00055
+  pitch: 68.99999
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 23
+  - 23
+  - 23
+  - 23
+  - 23
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+deployments:
+  '0':
+    id: e865a125-49d2-40c7-8eab-e2fd014c7dc0
+    region:
+      world: PKW_0325
+      pos1:
+        x: -250
+        y: 68
+        z: 592
+      pos2:
+        x: -218
+        y: 93
+        z: 620
+    start:
+      world: PKW_0325
+      x: -222.77930496074777
+      y: 79.0
+      z: 606.3952561429716
+      yaw: 89.24994
+      pitch: -3.150035
+    end:
+      world: PKW_0325
+      x: -248.61870838989233
+      y: 79.0
+      z: 606.3563301780802
+      yaw: 90.00055
+      pitch: 68.99999

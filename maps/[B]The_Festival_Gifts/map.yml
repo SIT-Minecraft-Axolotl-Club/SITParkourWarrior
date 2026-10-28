@@ -1,0 +1,38 @@
+id: '[B]The_Festival_Gifts'
+title: The Festival Gifts
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 112
+    y: -8
+    z: -173
+  pos2:
+    x: 155
+    y: 17
+    z: -145
+start:
+  world: PKW
+  x: 150.3061638275299
+  y: 1.0625
+  z: -158.48980176159603
+  yaw: 90.09981
+  pitch: -0.43020755
+end:
+  world: PKW
+  x: 113.49857474099935
+  y: 0.0
+  z: -158.47460295353366
+  yaw: -69.675995
+  pitch: 76.35997
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

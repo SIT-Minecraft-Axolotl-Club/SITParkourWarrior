@@ -1,0 +1,65 @@
+id: '[M]The_Eroded_Walls'
+title: The Eroded Walls
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 226
+    y: -8
+    z: 89
+  pos2:
+    x: 254
+    y: 17
+    z: 121
+start:
+  world: PKW
+  x: 240.48142783028706
+  y: 3.0
+  z: 94.65331264552492
+  yaw: -0.46240234
+  pitch: -1.350099
+end:
+  world: PKW
+  x: 240.4311562943168
+  y: 3.0
+  z: 120.39831781334753
+  yaw: 87.43732
+  pitch: 80.99992
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: bc995dae-34fc-4e13-a351-fbad2d2200ea
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 61
+        z: 445
+      pos2:
+        x: 22
+        y: 86
+        z: 477
+    start:
+      world: PKW_0325
+      x: 8.48142783028706
+      y: 72.0
+      z: 450.6533126455249
+      yaw: -0.46240234
+      pitch: -1.350099
+    end:
+      world: PKW_0325
+      x: 8.431156294316793
+      y: 72.0
+      z: 476.39831781334755
+      yaw: 87.43732
+      pitch: 80.99992

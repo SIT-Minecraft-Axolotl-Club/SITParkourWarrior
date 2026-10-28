@@ -1,0 +1,38 @@
+id: '[B]The_Popsicle_&_Cream'
+title: The Popsicle & Cream
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 65
+    y: -8
+    z: -173
+  pos2:
+    x: 107
+    y: 17
+    z: -145
+start:
+  world: PKW
+  x: 102.27625149195885
+  y: 4.0625
+  z: -158.4880476016944
+  yaw: 90.262726
+  pitch: 0.54793036
+end:
+  world: PKW
+  x: 66.3744527102681
+  y: 4.0
+  z: -158.50886625190546
+  yaw: 88.143196
+  pitch: 71.46879
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

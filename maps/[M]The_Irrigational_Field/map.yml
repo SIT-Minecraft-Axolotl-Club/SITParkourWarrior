@@ -1,0 +1,107 @@
+id: '[M]The_Irrigational_Field'
+title: The Irrigational Field
+difficulty: easy
+deployed: true
+effects:
+  particles: false
+  sound: false
+region:
+  world: PKW
+  pos1:
+    x: -224
+    y: -8
+    z: 7
+  pos2:
+    x: -196
+    y: 17
+    z: 43
+start:
+  world: PKW
+  x: -209.4849606073694
+  y: 1.0
+  z: 12.567564939232849
+  yaw: -0.85248584
+  pitch: -2.7676902
+end:
+  world: PKW
+  x: -209.44667871277508
+  y: 1.0
+  z: 42.42750673511706
+  yaw: 87.35029
+  pitch: 81.03309
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  - 8
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+deployments:
+  '0':
+    id: b4b07e6f-5f90-494e-8e6c-42982cee5018
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 63
+        z: 226
+      pos2:
+        x: 22
+        y: 88
+        z: 262
+    start:
+      world: PKW_0325
+      x: 8.515039392630598
+      y: 72.0
+      z: 231.56756493923285
+      yaw: -0.85248584
+      pitch: -2.7676902
+    end:
+      world: PKW_0325
+      x: 8.553321287224918
+      y: 72.0
+      z: 261.42750673511705
+      yaw: 87.35029
+      pitch: 81.03309
+  '1':
+    id: 130d37bf-c7c4-4bf9-8d19-ee295fb2cdc3
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 253
+      pos2:
+        x: 14
+        y: 122
+        z: 289
+    start:
+      world: PKW_cs
+      x: 0.5150393926305981
+      y: 106.0
+      z: 258.56756493923285
+      yaw: -0.85248584
+      pitch: -2.7676902
+    end:
+      world: PKW_cs
+      x: 0.553321287224918
+      y: 106.0
+      z: 288.42750673511705
+      yaw: 87.35029
+      pitch: 81.03309

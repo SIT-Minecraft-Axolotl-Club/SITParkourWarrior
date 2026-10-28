@@ -1,0 +1,87 @@
+id: '[M]The_Looming_Grove'
+title: The Looming Grove
+difficulty: easy
+deployed: true
+effects:
+  particles: false
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -164
+    y: -8
+    z: 7
+  pos2:
+    x: -136
+    y: 17
+    z: 43
+start:
+  world: PKW
+  x: -149.38809889222338
+  y: 1.0625
+  z: 12.663678738322963
+  yaw: 0.17700195
+  pitch: -3.9104638
+end:
+  world: PKW
+  x: -149.4742045441688
+  y: 1.0
+  z: 42.525313401041245
+  yaw: -159.5987
+  pitch: 64.23878
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+deployments:
+  '0':
+    id: 16ac9484-a594-4e13-8068-3d0afdf4feae
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 101
+        z: 737
+      pos2:
+        x: 14
+        y: 126
+        z: 773
+    start:
+      world: PKW_cs
+      x: 0.6119011077766174
+      y: 110.0625
+      z: 742.6636787383229
+      yaw: 0.17700195
+      pitch: -3.9104638
+    end:
+      world: PKW_cs
+      x: 0.5257954558312008
+      y: 110.0
+      z: 772.5253134010412
+      yaw: -159.5987
+      pitch: 64.23878

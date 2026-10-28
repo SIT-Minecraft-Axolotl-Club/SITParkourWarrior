@@ -1,0 +1,69 @@
+id: '[M]The_Jumping_Cross[+]'
+title: The Jumping Cross *
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 162
+    y: -8
+    z: 102
+  pos2:
+    x: 190
+    y: 17
+    z: 139
+start:
+  world: PKW
+  x: 176.5058439314018
+  y: 1.0
+  z: 107.7055713179775
+  yaw: 0.13259888
+  pitch: -3.8002362
+end:
+  world: PKW
+  x: 176.4369782032605
+  y: 5.0
+  z: 138.53634585943627
+  yaw: 63.87973
+  pitch: 67.60974
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 30
+  - 30
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2
+deployments:
+  '0':
+    id: 9bf2afe4-4d2c-4db8-8aa3-4cfd6edcbe04
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 63
+        z: 555
+      pos2:
+        x: 22
+        y: 88
+        z: 592
+    start:
+      world: PKW_0325
+      x: 8.505843931401813
+      y: 72.0
+      z: 560.7055713179775
+      yaw: 0.13259888
+      pitch: -3.8002362
+    end:
+      world: PKW_0325
+      x: 8.436978203260509
+      y: 76.0
+      z: 591.5363458594363
+      yaw: 63.87973
+      pitch: 67.60974

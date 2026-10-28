@@ -1,0 +1,69 @@
+id: '[B]The_Whirling_Mine'
+title: The Whirling Mine
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -347
+  pos2:
+    x: -233
+    y: 17
+    z: -319
+start:
+  world: PKW
+  x: -237.6806894304223
+  y: 4.0
+  z: -332.4991033128105
+  yaw: 89.538574
+  pitch: 1.7970006
+end:
+  world: PKW
+  x: -267.50280202909124
+  y: 4.0
+  z: -332.456032950901
+  yaw: 90.18994
+  pitch: 73.37003
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 24
+  - 30
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2
+deployments:
+  '0':
+    id: c7993ce4-5cee-412b-b9a5-5df7a471b637
+    region:
+      world: PKW_cs
+      pos1:
+        x: -128
+        y: 96
+        z: 474
+      pos2:
+        x: -92
+        y: 121
+        z: 502
+    start:
+      world: PKW_cs
+      x: -96.68068943042229
+      y: 108.0
+      z: 488.5008966871895
+      yaw: 89.538574
+      pitch: 1.7970006
+    end:
+      world: PKW_cs
+      x: -126.50280202909124
+      y: 108.0
+      z: 488.543967049099
+      yaw: 90.18994
+      pitch: 73.37003

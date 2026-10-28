@@ -1,0 +1,91 @@
+id: '[M]The_Edge_Flip'
+title: The Edge Flip
+difficulty: extreme
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 226
+    y: -8
+    z: 50
+  pos2:
+    x: 254
+    y: 17
+    z: 84
+start:
+  world: PKW
+  x: 240.4709544542183
+  y: 1.0
+  z: 55.524275795783694
+  yaw: -0.1637268
+  pitch: 2.5500782
+end:
+  world: PKW
+  x: 240.5235392692525
+  y: 2.0
+  z: 83.37979144509636
+  yaw: -102.46384
+  pitch: 82.20007
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 940fe51e-59ae-42f3-831e-5f0ac1df1d08
+    region:
+      world: PKW
+      pos1:
+        x: -36
+        y: 56
+        z: -98
+      pos2:
+        x: -8
+        y: 81
+        z: -64
+    start:
+      world: PKW
+      x: -21.529045545781713
+      y: 65.0
+      z: -92.4757242042163
+      yaw: -0.1637268
+      pitch: 2.5500782
+    end:
+      world: PKW
+      x: -21.476460730747505
+      y: 66.0
+      z: -64.62020855490364
+      yaw: -102.46384
+      pitch: 82.20007
+  '1':
+    id: d820bc43-e65a-414b-85b2-17d91a5671a3
+    region:
+      world: PKW
+      pos1:
+        x: -2
+        y: 55
+        z: -132
+      pos2:
+        x: 26
+        y: 80
+        z: -98
+    start:
+      world: PKW
+      x: 12.470954454218287
+      y: 64.0
+      z: -126.4757242042163
+      yaw: -0.1637268
+      pitch: 2.5500782
+    end:
+      world: PKW
+      x: 12.523539269252495
+      y: 65.0
+      z: -98.62020855490364
+      yaw: -102.46384
+      pitch: 82.20007

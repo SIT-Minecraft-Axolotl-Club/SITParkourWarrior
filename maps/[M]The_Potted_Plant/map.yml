@@ -1,0 +1,38 @@
+id: '[M]The_Potted_Plant'
+title: The Potted Plant
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 290
+    y: -8
+    z: -37
+  pos2:
+    x: 318
+    y: 17
+    z: -2
+start:
+  world: PKW
+  x: 304.501036985407
+  y: 1.0
+  z: -31.32078573156594
+  yaw: 0.05053711
+  pitch: 0.9817908
+end:
+  world: PKW
+  x: 304.4629893434123
+  y: 1.0
+  z: -2.401649947590596
+  yaw: -50.980957
+  pitch: 82.33703
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

@@ -1,0 +1,38 @@
+id: '[B]The_Relic_Skip[+]'
+title: The Relic Skip *
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -347
+  pos2:
+    x: -277
+    y: 17
+    z: -319
+start:
+  world: PKW
+  x: -281.7053050593851
+  y: 1.0
+  z: -332.4682133158754
+  yaw: 90.099915
+  pitch: -1.5716832
+end:
+  world: PKW
+  x: -311.6137570718561
+  y: 1.0
+  z: -332.4138326609222
+  yaw: 18.363865
+  pitch: 76.033646
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

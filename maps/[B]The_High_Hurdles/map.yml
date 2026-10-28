@@ -1,0 +1,65 @@
+id: '[B]The_High_Hurdles'
+title: The High Hurdles
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -197
+  pos2:
+    x: -277
+    y: 17
+    z: -169
+start:
+  world: PKW
+  x: -281.52408470149544
+  y: 1.0
+  z: -182.49544399451287
+  yaw: 90.44171
+  pitch: -0.65597266
+end:
+  world: PKW
+  x: -311.32733613120496
+  y: 0.0
+  z: -182.63453575998037
+  yaw: 160.54724
+  pitch: 53.146065
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 5ff4429c-6e1f-4248-962c-49963dced768
+    region:
+      world: PKW_0325
+      pos1:
+        x: -429
+        y: 63
+        z: 418
+      pos2:
+        x: -393
+        y: 88
+        z: 446
+    start:
+      world: PKW_0325
+      x: -397.52408470149544
+      y: 72.0
+      z: 432.50455600548713
+      yaw: 90.44171
+      pitch: -0.65597266
+    end:
+      world: PKW_0325
+      x: -427.32733613120496
+      y: 71.0
+      z: 432.3654642400196
+      yaw: 160.54724
+      pitch: 53.146065

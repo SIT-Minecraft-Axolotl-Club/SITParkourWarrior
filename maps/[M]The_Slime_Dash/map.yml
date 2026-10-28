@@ -1,0 +1,38 @@
+id: '[M]The_Slime_Dash'
+title: The Slime Dash?
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 258
+    y: -8
+    z: -37
+  pos2:
+    x: 286
+    y: 17
+    z: 8
+start:
+  world: PKW
+  x: 272.515911773632
+  y: 1.0
+  z: -31.444458998707933
+  yaw: 0.5686035
+  pitch: -2.2790732
+end:
+  world: PKW
+  x: 272.5432684127815
+  y: -1.0
+  z: 7.508789499284045
+  yaw: 48.17517
+  pitch: 85.43464
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

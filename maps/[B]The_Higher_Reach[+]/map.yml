@@ -1,0 +1,38 @@
+id: '[B]The_Higher_Reach[+]'
+title: The Higher Reach *
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -227
+  pos2:
+    x: -277
+    y: 17
+    z: -199
+start:
+  world: PKW
+  x: -281.7113554346941
+  y: 1.0625
+  z: -212.41966078849418
+  yaw: 90.238434
+  pitch: 0.13419141
+end:
+  world: PKW
+  x: -311.58257129779076
+  y: 6.0
+  z: -212.55334005535985
+  yaw: 95.94476
+  pitch: 78.55481
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

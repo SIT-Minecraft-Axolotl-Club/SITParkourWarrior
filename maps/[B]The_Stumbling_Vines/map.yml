@@ -1,0 +1,38 @@
+id: '[B]The_Stumbling_Vines'
+title: The Stumbling Vines
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 112
+    y: -8
+    z: -141
+  pos2:
+    x: 153
+    y: 17
+    z: -113
+start:
+  world: PKW
+  x: 148.39733804721112
+  y: 1.0625
+  z: -126.59096788660104
+  yaw: 90.3963
+  pitch: -1.9527892
+end:
+  world: PKW
+  x: 113.39539354164374
+  y: 4.0
+  z: -126.44138238288139
+  yaw: -107.20355
+  pitch: 74.8374
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

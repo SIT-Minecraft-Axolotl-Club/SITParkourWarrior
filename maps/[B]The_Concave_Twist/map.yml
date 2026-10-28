@@ -1,0 +1,111 @@
+id: '[B]The_Concave_Twist'
+title: The Concave Twist
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -407
+  pos2:
+    x: -277
+    y: 17
+    z: -379
+start:
+  world: PKW
+  x: -281.65618776171806
+  y: 4.0
+  z: -392.41752989731987
+  yaw: 90.149536
+  pitch: -2.9998481
+end:
+  world: PKW
+  x: -311.4074306208153
+  y: 5.0
+  z: -392.45729116889567
+  yaw: 176.99896
+  pitch: 89.85017
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 27
+  - 5
+  - 27
+  - 5
+  - 27
+  - 5
+  - 27
+  - 5
+  - 27
+  - 5
+  - 27
+  - 5
+  - 27
+  - 5
+  - 27
+  - 5
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  - state_7.schem
+  - state_8.schem
+  - state_9.schem
+  - state_10.schem
+  - state_11.schem
+  - state_12.schem
+  - state_13.schem
+  - state_14.schem
+  - state_15.schem
+  - state_16.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+deployments:
+  '0':
+    id: 1aa4441d-a592-4e9f-9aa6-3d07b4a69dd5
+    region:
+      world: PKW_0325
+      pos1:
+        x: -326
+        y: 68
+        z: 592
+      pos2:
+        x: -290
+        y: 93
+        z: 620
+    start:
+      world: PKW_0325
+      x: -294.65618776171806
+      y: 80.0
+      z: 606.5824701026802
+      yaw: 90.149536
+      pitch: -2.9998481
+    end:
+      world: PKW_0325
+      x: -324.4074306208153
+      y: 81.0
+      z: 606.5427088311044
+      yaw: 176.99896
+      pitch: 89.85017

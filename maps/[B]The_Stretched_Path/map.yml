@@ -1,0 +1,69 @@
+id: '[B]The_Stretched_Path'
+title: The Stretched Path
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -445
+    y: -8
+    z: -77
+  pos2:
+    x: -409
+    y: 17
+    z: -49
+start:
+  world: PKW
+  x: -413.6176633217199
+  y: 1.0625
+  z: -62.47351588608505
+  yaw: 90.3374
+  pitch: -3.909437
+end:
+  world: PKW
+  x: -443.5206108019056
+  y: 2.0
+  z: -62.502553684053346
+  yaw: -4.060791
+  pitch: 68.80483
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 22
+  - 22
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2
+deployments:
+  '0':
+    id: d468ff03-2943-4fe3-aeaf-da3bac002440
+    region:
+      world: PKW_0325
+      pos1:
+        x: -42
+        y: 63
+        z: 418
+      pos2:
+        x: -6
+        y: 88
+        z: 446
+    start:
+      world: PKW_0325
+      x: -10.617663321719874
+      y: 72.0625
+      z: 432.52648411391493
+      yaw: 90.3374
+      pitch: -3.909437
+    end:
+      world: PKW_0325
+      x: -40.520610801905605
+      y: 73.0
+      z: 432.49744631594666
+      yaw: -4.060791
+      pitch: 68.80483

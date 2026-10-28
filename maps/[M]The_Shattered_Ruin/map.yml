@@ -1,0 +1,69 @@
+id: '[M]The_Shattered_Ruin'
+title: The Shattered Ruin
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 162
+    y: -8
+    z: 144
+  pos2:
+    x: 190
+    y: 17
+    z: 183
+start:
+  world: PKW
+  x: 176.57636536804836
+  y: 3.0
+  z: 149.60142403614154
+  yaw: 0.44752818
+  pitch: -4.649454
+end:
+  world: PKW
+  x: 176.47946260381528
+  y: 5.0
+  z: 182.6271977754402
+  yaw: -24.752472
+  pitch: 68.55055
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 300
+  - 300
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2
+deployments:
+  '0':
+    id: 2dfe70da-adc2-4d4f-aa8c-e108f5706c53
+    region:
+      world: PKW_cs
+      pos1:
+        x: 17
+        y: 103
+        z: 852
+      pos2:
+        x: 45
+        y: 128
+        z: 891
+    start:
+      world: PKW_cs
+      x: 31.576365368048357
+      y: 114.0
+      z: 857.6014240361416
+      yaw: 0.44752818
+      pitch: -4.649454
+    end:
+      world: PKW_cs
+      x: 31.47946260381528
+      y: 116.0
+      z: 890.6271977754402
+      yaw: -24.752472
+      pitch: 68.55055

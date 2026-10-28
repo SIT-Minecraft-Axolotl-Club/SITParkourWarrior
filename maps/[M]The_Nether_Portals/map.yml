@@ -1,0 +1,38 @@
+id: '[M]The_Nether_Portals'
+title: The Nether Portals
+difficulty: easy
+deployed: false
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 354
+    y: -8
+    z: -37
+  pos2:
+    x: 382
+    y: 17
+    z: 1
+start:
+  world: PKW
+  x: 368.5230023184814
+  y: 4.0
+  z: -31.336027103029007
+  yaw: 0.14749146
+  pitch: -1.9499513
+end:
+  world: PKW
+  x: 368.4814242816045
+  y: 4.0
+  z: 0.4441679332509548
+  yaw: 102.7475
+  pitch: 78.75007
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1

@@ -1,0 +1,65 @@
+id: '[B]The_Icy_Stair_Twist'
+title: The Icy Stairway Twist
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -287
+  pos2:
+    x: -233
+    y: 17
+    z: -259
+start:
+  world: PKW
+  x: -237.67717619060937
+  y: 1.0
+  z: -272.49392051834167
+  yaw: 90.23193
+  pitch: -3.201894
+end:
+  world: PKW
+  x: -267.53113723758605
+  y: 2.0
+  z: -272.3662420895842
+  yaw: -3.350586
+  pitch: 80.59886
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: c844a498-c0e2-46c4-aae3-df40810b6b48
+    region:
+      world: PKW_cs
+      pos1:
+        x: -52
+        y: 97
+        z: 328
+      pos2:
+        x: -16
+        y: 122
+        z: 356
+    start:
+      world: PKW_cs
+      x: -20.677176190609373
+      y: 106.0
+      z: 342.50607948165833
+      yaw: 90.23193
+      pitch: -3.201894
+    end:
+      world: PKW_cs
+      x: -50.53113723758605
+      y: 107.0
+      z: 342.6337579104158
+      yaw: -3.350586
+      pitch: 80.59886

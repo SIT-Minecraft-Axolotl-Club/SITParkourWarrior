@@ -1,0 +1,75 @@
+id: '[B]The_Entwined_Snakes'
+title: The Entwined Snakes
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -401
+    y: -8
+    z: -197
+  pos2:
+    x: -365
+    y: 17
+    z: -169
+start:
+  world: PKW
+  x: -369.60090690566096
+  y: 5.0
+  z: -182.50305836361326
+  yaw: 89.87594
+  pitch: -5.7025867
+end:
+  world: PKW
+  x: -399.51224461894634
+  y: 5.0
+  z: -182.44925672814557
+  yaw: -85.22531
+  pitch: 53.96875
+dynamic:
+  enabled: false
+  interval_sequence:
+  - 18
+  - 28
+  - 18
+  - 28
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+deployments:
+  '0':
+    id: fd6eed96-9f78-45b7-9dca-23f82bd9fc55
+    region:
+      world: PKW_cs
+      pos1:
+        x: -135
+        y: 93
+        z: 25
+      pos2:
+        x: -99
+        y: 118
+        z: 53
+    start:
+      world: PKW_cs
+      x: -103.60090690566096
+      y: 106.0
+      z: 39.49694163638674
+      yaw: 89.87594
+      pitch: -5.7025867
+    end:
+      world: PKW_cs
+      x: -133.51224461894634
+      y: 106.0
+      z: 39.55074327185443
+      yaw: -85.22531
+      pitch: 53.96875

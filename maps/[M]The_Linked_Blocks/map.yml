@@ -1,0 +1,65 @@
+id: '[M]The_Linked_Blocks'
+title: The Linked Blocks
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -404
+    y: -8
+    z: 7
+  pos2:
+    x: -376
+    y: 17
+    z: 43
+start:
+  world: PKW
+  x: -389.45981935399834
+  y: 1.0625
+  z: 12.655176763834197
+  yaw: 0.41485596
+  pitch: -2.223641
+end:
+  world: PKW
+  x: -389.5601195081572
+  y: 1.0
+  z: 42.48169521048313
+  yaw: -8.715271
+  pitch: 77.17513
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: 02b394e4-2cd9-4e13-9b3c-4496f29b1ff9
+    region:
+      world: PKW_cs
+      pos1:
+        x: 17
+        y: 105
+        z: 814
+      pos2:
+        x: 45
+        y: 130
+        z: 850
+    start:
+      world: PKW_cs
+      x: 31.54018064600166
+      y: 114.0625
+      z: 819.6551767638342
+      yaw: 0.41485596
+      pitch: -2.223641
+    end:
+      world: PKW_cs
+      x: 31.439880491842814
+      y: 114.0
+      z: 849.4816952104832
+      yaw: -8.715271
+      pitch: 77.17513

@@ -1,0 +1,42 @@
+id: '[M]The_Broken_Nodes'
+title: The Broken Nodes
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 194
+    y: -8
+    z: -37
+  pos2:
+    x: 222
+    y: 17
+    z: -3
+start:
+  world: PKW
+  x: 208.47917596499101
+  y: 1.0
+  z: -31.421715502146156
+  yaw: 0.13269043
+  pitch: -3.2569036
+end:
+  world: PKW
+  x: 208.45720526525267
+  y: 1.0
+  z: -3.440922957745163
+  yaw: 77.73804
+  pitch: 71.0877
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 33
+  - 27
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2

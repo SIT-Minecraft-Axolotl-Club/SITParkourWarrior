@@ -1,0 +1,65 @@
+id: '[M]The_Candy_Cane_Valley'
+title: The Candy Cane Valley
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -404
+    y: -8
+    z: -37
+  pos2:
+    x: -376
+    y: 17
+    z: -1
+start:
+  world: PKW
+  x: -389.55092508674534
+  y: 1.0625
+  z: -31.403649882766846
+  yaw: 0.059631348
+  pitch: 0.6557552
+end:
+  world: PKW
+  x: -389.6001428876754
+  y: 1.0
+  z: -1.3629305399583675
+  yaw: -1.4072876
+  pitch: 67.01158
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: b844a2f4-739b-423c-b696-ea6a238da8a4
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 63
+        z: 150
+      pos2:
+        x: 22
+        y: 88
+        z: 186
+    start:
+      world: PKW_0325
+      x: 8.449074913254663
+      y: 72.0625
+      z: 155.59635011723316
+      yaw: 0.059631348
+      pitch: 0.6557552
+    end:
+      world: PKW_0325
+      x: 8.399857112324582
+      y: 72.0
+      z: 185.63706946004163
+      yaw: -1.4072876
+      pitch: 67.01158

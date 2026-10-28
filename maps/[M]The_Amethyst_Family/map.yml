@@ -1,0 +1,91 @@
+id: '[M]The_Amethyst_Family'
+title: The Amethyst Family
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -114
+    y: -8
+    z: -37
+  pos2:
+    x: -86
+    y: 17
+    z: -1
+start:
+  world: PKW
+  x: -99.59016662169904
+  y: 3.0
+  z: -31.316292052081497
+  yaw: -0.7363281
+  pitch: -4.1988263
+end:
+  world: PKW
+  x: -99.40495473515037
+  y: 6.0
+  z: -1.5627003733910894
+  yaw: 139.36389
+  pitch: 21.451202
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: f85fbbd0-bc30-4341-94cc-649324b790cf
+    region:
+      world: PKW
+      pos1:
+        x: -2
+        y: 54
+        z: -96
+      pos2:
+        x: 26
+        y: 79
+        z: -60
+    start:
+      world: PKW
+      x: 12.40983337830096
+      y: 65.0
+      z: -90.3162920520815
+      yaw: -0.7363281
+      pitch: -4.1988263
+    end:
+      world: PKW
+      x: 12.595045264849631
+      y: 68.0
+      z: -60.56270037339109
+      yaw: 139.36389
+      pitch: 21.451202
+  '1':
+    id: f380b5d5-5897-4d66-b790-410177dca40b
+    region:
+      world: PKW_0325
+      pos1:
+        x: -397
+        y: 62
+        z: 494
+      pos2:
+        x: -369
+        y: 87
+        z: 530
+    start:
+      world: PKW_0325
+      x: -382.59016662169904
+      y: 73.0
+      z: 499.6837079479185
+      yaw: -0.7363281
+      pitch: -4.1988263
+    end:
+      world: PKW_0325
+      x: -382.40495473515034
+      y: 76.0
+      z: 529.4372996266089
+      yaw: 139.36389
+      pitch: 21.451202

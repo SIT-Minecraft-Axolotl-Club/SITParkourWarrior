@@ -1,0 +1,91 @@
+id: '[B]The_Speed_Run[+]'
+title: The Speed Run *
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -269
+    y: -8
+    z: -227
+  pos2:
+    x: -233
+    y: 17
+    z: -199
+start:
+  world: PKW
+  x: -237.6716837281674
+  y: 1.0625
+  z: -212.49801054434812
+  yaw: 90.23829
+  pitch: 0.7863481
+end:
+  world: PKW
+  x: -267.6854837467546
+  y: 1.0
+  z: -212.5005374589307
+  yaw: 87.14059
+  pitch: 63.392353
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: e82805a3-79a4-428a-a3e5-d297050cfde2
+    region:
+      world: PKW_0325
+      pos1:
+        x: -80
+        y: 64
+        z: 418
+      pos2:
+        x: -44
+        y: 89
+        z: 446
+    start:
+      world: PKW_0325
+      x: -48.67168372816741
+      y: 73.0625
+      z: 432.5019894556519
+      yaw: 90.23829
+      pitch: 0.7863481
+    end:
+      world: PKW_0325
+      x: -78.68548374675458
+      y: 73.0
+      z: 432.4994625410693
+      yaw: 87.14059
+      pitch: 63.392353
+  '1':
+    id: ecf6bf7f-eb2c-45e1-9f8e-4571ee10717e
+    region:
+      world: PKW_cs
+      pos1:
+        x: -97
+        y: 97
+        z: 25
+      pos2:
+        x: -61
+        y: 122
+        z: 53
+    start:
+      world: PKW_cs
+      x: -65.67168372816741
+      y: 106.0625
+      z: 39.50198945565188
+      yaw: 90.23829
+      pitch: 0.7863481
+    end:
+      world: PKW_cs
+      x: -95.68548374675458
+      y: 106.0
+      z: 39.499462541069306
+      yaw: 87.14059
+      pitch: 63.392353

@@ -1,0 +1,65 @@
+id: '[M]The_Distorted_Sandy_Rings'
+title: The Distorted Sandy Rings
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 226
+    y: -8
+    z: 8
+  pos2:
+    x: 254
+    y: 17
+    z: 45
+start:
+  world: PKW
+  x: 240.45845806013767
+  y: 1.0
+  z: 13.589919703036722
+  yaw: -0.084472656
+  pitch: -0.16687866
+end:
+  world: PKW
+  x: 240.56105161670848
+  y: 1.0
+  z: 44.53209866198401
+  yaw: -124.15491
+  pitch: 67.49323
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: cd45e302-23dd-452e-9064-09fdb2f70011
+    region:
+      world: PKW_0325
+      pos1:
+        x: -6
+        y: 61
+        z: 73
+      pos2:
+        x: 22
+        y: 86
+        z: 110
+    start:
+      world: PKW_0325
+      x: 8.458458060137673
+      y: 70.0
+      z: 78.58991970303673
+      yaw: -0.084472656
+      pitch: -0.16687866
+    end:
+      world: PKW_0325
+      x: 8.561051616708482
+      y: 70.0
+      z: 109.53209866198401
+      yaw: -124.15491
+      pitch: 67.49323

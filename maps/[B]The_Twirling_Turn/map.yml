@@ -1,0 +1,65 @@
+id: '[B]The_Twirling_Turn'
+title: The Twirling Turn
+difficulty: hard
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -313
+    y: -8
+    z: -107
+  pos2:
+    x: -277
+    y: 17
+    z: -79
+start:
+  world: PKW
+  x: -281.682286704682
+  y: 1.0625
+  z: -92.53793401567187
+  yaw: 90.18778
+  pitch: -0.64841264
+end:
+  world: PKW
+  x: -311.520543856844
+  y: 2.0
+  z: -92.4626638083425
+  yaw: -43.01301
+  pitch: 75.3267
+dynamic:
+  enabled: false
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: be7415ab-b11c-44a1-8695-a82b5da242b7
+    region:
+      world: PKW_cs
+      pos1:
+        x: -90
+        y: 100
+        z: 621
+      pos2:
+        x: -54
+        y: 125
+        z: 649
+    start:
+      world: PKW_cs
+      x: -58.682286704681985
+      y: 109.0625
+      z: 635.4620659843281
+      yaw: 90.18778
+      pitch: -0.64841264
+    end:
+      world: PKW_cs
+      x: -88.52054385684397
+      y: 110.0
+      z: 635.5373361916575
+      yaw: -43.01301
+      pitch: 75.3267

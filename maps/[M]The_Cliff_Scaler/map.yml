@@ -1,0 +1,65 @@
+id: '[M]The_Cliff_Scaler'
+title: The Cliff Scaler
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -104
+    y: -8
+    z: 7
+  pos2:
+    x: -76
+    y: 17
+    z: 43
+start:
+  world: PKW
+  x: -89.53822861735866
+  y: 1.0625
+  z: 12.62156374357859
+  yaw: -0.2998047
+  pitch: 2.4000556
+end:
+  world: PKW
+  x: -89.49805386867232
+  y: 2.0
+  z: 42.54565144554008
+  yaw: -84.29993
+  pitch: 70.80007
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
+deployments:
+  '0':
+    id: d363a338-f1a0-463b-9360-a8e024813677
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 97
+        z: 93
+      pos2:
+        x: 14
+        y: 122
+        z: 129
+    start:
+      world: PKW_cs
+      x: 0.461771382641345
+      y: 106.0625
+      z: 98.62156374357859
+      yaw: -0.2998047
+      pitch: 2.4000556
+    end:
+      world: PKW_cs
+      x: 0.501946131327685
+      y: 107.0
+      z: 128.54565144554007
+      yaw: -84.29993
+      pitch: 70.80007

@@ -1,0 +1,81 @@
+id: '[M]The_Fracturing_Span'
+title: The Fracturing Span
+difficulty: easy
+deployed: true
+effects:
+  particles: false
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -344
+    y: -8
+    z: 95
+  pos2:
+    x: -316
+    y: 17
+    z: 131
+start:
+  world: PKW
+  x: -329.50634471315857
+  y: 1.0
+  z: 100.61329368015765
+  yaw: 0.06323242
+  pitch: -1.9259808
+end:
+  world: PKW
+  x: -329.57526383700485
+  y: 1.0
+  z: 130.6132474917438
+  yaw: -96.94348
+  pitch: 83.505135
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 6
+  - 6
+  - 6
+  - 6
+  - 6
+  - 6
+  states:
+  - state_1.schem
+  - state_2.schem
+  - state_3.schem
+  - state_4.schem
+  - state_5.schem
+  - state_6.schem
+  state_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+deployments:
+  '0':
+    id: c44e442b-4762-496d-83cf-e1d76c5c2e32
+    region:
+      world: PKW_cs
+      pos1:
+        x: -14
+        y: 100
+        z: 584
+      pos2:
+        x: 14
+        y: 125
+        z: 620
+    start:
+      world: PKW_cs
+      x: 0.493655286841431
+      y: 109.0
+      z: 589.6132936801577
+      yaw: 0.06323242
+      pitch: -1.9259808
+    end:
+      world: PKW_cs
+      x: 0.4247361629951456
+      y: 109.0
+      z: 619.6132474917438
+      yaw: -96.94348
+      pitch: 83.505135

@@ -1,0 +1,42 @@
+id: '[M]The_Cactus_Surge'
+title: The Cactus Surge
+difficulty: normal
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: -344
+    y: -8
+    z: 51
+  pos2:
+    x: -316
+    y: 17
+    z: 87
+start:
+  world: PKW
+  x: -329.5112857110559
+  y: 1.0
+  z: 56.6799871997011
+  yaw: 0.54541016
+  pitch: -1.6266721
+end:
+  world: PKW
+  x: -329.5527914654081
+  y: 1.0
+  z: 86.62564047719711
+  yaw: -6.3028564
+  pitch: 72.06588
+dynamic:
+  enabled: true
+  interval_sequence:
+  - 25
+  - 25
+  states:
+  - state_1.schem
+  - state_2.schem
+  state_ids:
+  - 1
+  - 2

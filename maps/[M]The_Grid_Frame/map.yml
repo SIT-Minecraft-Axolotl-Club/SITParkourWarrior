@@ -1,0 +1,38 @@
+id: '[M]The_Grid_Frame'
+title: The Grid Frame
+difficulty: easy
+deployed: true
+effects:
+  particles: true
+  sound: true
+region:
+  world: PKW
+  pos1:
+    x: 162
+    y: -8
+    z: -37
+  pos2:
+    x: 190
+    y: 17
+    z: 5
+start:
+  world: PKW
+  x: 176.48503820799746
+  y: 1.0625
+  z: -31.403468086039418
+  yaw: -0.08987427
+  pitch: -2.278822
+end:
+  world: PKW
+  x: 176.39491448870015
+  y: 1.0
+  z: 4.550194908275211
+  yaw: -5.1440125
+  pitch: 75.81564
+dynamic:
+  enabled: true
+  interval_sequence: []
+  states:
+  - state_1.schem
+  state_ids:
+  - 1
