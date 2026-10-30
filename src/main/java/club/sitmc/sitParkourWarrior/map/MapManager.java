@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -98,12 +99,24 @@ public class MapManager {
         config.set("title", map.getTitle());
         config.set("subtitle", map.getSubtitle());
         config.set("difficulty", map.getDifficulty().name().toLowerCase());
+        // PKWS metadata lives in its own section because the legacy PKW
+        // difficulty field above already uses the same top-level key.
+        // Do not create this section for untouched legacy maps.
+        if (map.hasPkwsMetadata()) {
+            config.set("pkws.orientation", map.getPkwsOrientation() != null
+                    ? map.getPkwsOrientation().toConfigString() : null);
+            config.set("pkws.difficulty", map.getPkwsDifficulty());
+            config.set("pkws.weight", map.getPkwsWeight());
+        }
         config.set("deployed", map.isDeployed());
         config.set("effects.particles", map.isParticlesEnabled());
         config.set("effects.sound", map.isSoundEnabled());
         config.set("node_type", map.getNodeType().toConfigString());
 
-        if (map.getNodeType() == NodeType.GLOBAL_END) {
+        // Keep the legacy end-tier value when a GLOBAL_END is temporarily
+        // marked as PKWS_END; it is ignored by PKWS and can be restored if
+        // the node is later changed back to a PKW GLOBAL_END.
+        if (map.getNodeType() == NodeType.GLOBAL_END || map.getNodeType() == NodeType.PKWS_END) {
             config.set("end_tier", map.getEndTier().toConfigString());
         }
 
@@ -144,9 +157,18 @@ public class MapManager {
         }
         ConfigurationSection dynamicSection = config.createSection("dynamic");
         dynamicSection.set("enabled", dynamicData.isEnabled());
-        dynamicSection.set("interval_sequence", dynamicData.getIntervalSequence());
-        dynamicSection.set("states", dynamicData.getStates());
-        dynamicSection.set("state_ids", dynamicData.getStateIds());
+        List<Map<String, Object>> stateMaps = new ArrayList<>();
+        for (DynamicState state : dynamicData.getStates()) {
+            Map<String, Object> m = new LinkedHashMap<>();
+            m.put("id", state.getId());
+            m.put("file", state.getFile());
+            if (state.getName() != null && !state.getName().isBlank()) {
+                m.put("name", state.getName());
+            }
+            m.put("interval", state.getInterval());
+            stateMaps.add(m);
+        }
+        dynamicSection.set("state_list", stateMaps);
 
         List<Deployment> deployments = new ArrayList<>(map.getDeployments());
         if (!deployments.isEmpty()) {
@@ -231,6 +253,7 @@ public class MapManager {
                 map.setTitle(config.getString("title", id));
                 map.setSubtitle(config.getString("subtitle", null));
                 map.setDifficulty(Difficulty.fromString(config.getString("difficulty", "easy")));
+                loadPkwsMetadata(config, map, file);
                 map.setDeployed(config.getBoolean("deployed", false));
                 map.setParticlesEnabled(config.getBoolean("effects.particles", true));
                 map.setSoundEnabled(config.getBoolean("effects.sound", true));
@@ -275,12 +298,7 @@ public class MapManager {
                 if (dynamicSection != null) {
                     DynamicData dynamicData = map.getDynamicData();
                     dynamicData.setEnabled(dynamicSection.getBoolean("enabled", false));
-                    dynamicData.getIntervalSequence().clear();
-                    dynamicData.getIntervalSequence().addAll(dynamicSection.getIntegerList("interval_sequence"));
-                    dynamicData.getStates().clear();
-                    dynamicData.getStates().addAll(dynamicSection.getStringList("states"));
-                    dynamicData.getStateIds().clear();
-                    dynamicData.getStateIds().addAll(dynamicSection.getIntegerList("state_ids"));
+                    loadDynamicStates(dynamicSection, dynamicData);
                     // Auto-enable legacy maps that already have ≥2 states
                     // but were saved before the dynamic.enabled default fix.
                     if (!dynamicData.isEnabled() && dynamicData.getStates().size() >= 2) {
@@ -344,6 +362,193 @@ public class MapManager {
             }
         }
         rebuildWorldIndex();
+    }
+
+    /**
+     * Loads PKWS fields defensively.  The namespaced form is canonical:
+     * pkws.orientation, pkws.difficulty and pkws.weight.  A few early PKWS
+     * prototypes used top-level orientation/weight fields, so those are read
+     * as a non-destructive compatibility fallback.  A numeric top-level
+     * difficulty is also accepted; the existing string difficulty values
+     * (easy/normal/hard/extreme) remain the legacy PKW field.
+     */
+    private void loadPkwsMetadata(YamlConfiguration config, ParkourMap map, File file) {
+        boolean hasOrientation = config.contains("pkws.orientation");
+        Object orientationRaw = config.get("pkws.orientation");
+        if (!hasOrientation && config.contains("orientation")) {
+            hasOrientation = true;
+            orientationRaw = config.get("orientation");
+        }
+
+        boolean hasDifficulty = config.contains("pkws.difficulty");
+        Object difficultyRaw = config.get("pkws.difficulty");
+        if (!hasDifficulty && isIntegralValue(config.get("difficulty"))) {
+            hasDifficulty = true;
+            difficultyRaw = config.get("difficulty");
+        }
+
+        boolean hasWeight = config.contains("pkws.weight");
+        Object weightRaw = config.get("pkws.weight");
+        if (!hasWeight && config.contains("weight")) {
+            hasWeight = true;
+            weightRaw = config.get("weight");
+        }
+
+        if (!hasOrientation && !hasDifficulty && !hasWeight) {
+            plugin.getLogger().warning("[PKWS] 关卡 " + map.getId()
+                    + " 缺少 orientation/difficulty/weight，按默认值处理（未设置/未设置/0）："
+                    + file.getAbsolutePath());
+            map.loadPkwsMetadata(null, null, 0, false);
+            return;
+        }
+
+        PkwsOrientation orientation = null;
+        if (hasOrientation) {
+            if (orientationRaw == null) {
+                warnInvalidPkwsField(map, file, "orientation", null, "NS 或 EW");
+            } else {
+                orientation = PkwsOrientation.fromString(String.valueOf(orientationRaw));
+                if (orientation == null) {
+                    warnInvalidPkwsField(map, file, "orientation", orientationRaw, "NS 或 EW");
+                }
+            }
+        } else {
+            warnMissingPkwsField(map, file, "orientation", "未设置");
+        }
+
+        Integer difficulty = null;
+        if (hasDifficulty) {
+            Long value = toIntegralValue(difficultyRaw);
+            if (value == null || value < 1 || value > 16) {
+                warnInvalidPkwsField(map, file, "difficulty", difficultyRaw, "1-16");
+            } else {
+                difficulty = value.intValue();
+            }
+        } else {
+            warnMissingPkwsField(map, file, "difficulty", "未设置");
+        }
+
+        int weight = 0;
+        if (hasWeight) {
+            Long value = toIntegralValue(weightRaw);
+            if (value == null || value < 0 || value > Integer.MAX_VALUE) {
+                warnInvalidPkwsField(map, file, "weight", weightRaw, "大于等于 0 的整数");
+            } else {
+                weight = value.intValue();
+            }
+        } else {
+            warnMissingPkwsField(map, file, "weight", "0");
+        }
+
+        map.loadPkwsMetadata(orientation, difficulty, weight, true);
+    }
+
+    private void warnMissingPkwsField(ParkourMap map, File file, String field, String fallback) {
+        plugin.getLogger().warning("[PKWS] 关卡 " + map.getId() + " 缺少 " + field
+                + "，按默认值 " + fallback + " 处理：" + file.getAbsolutePath());
+    }
+
+    private void warnInvalidPkwsField(ParkourMap map, File file, String field,
+                                      Object value, String expected) {
+        plugin.getLogger().warning("[PKWS] 关卡 " + map.getId() + " 的 " + field
+                + " 值非法（" + String.valueOf(value) + "），按默认值处理；可选："
+                + expected + "：" + file.getAbsolutePath());
+    }
+
+    private boolean isIntegralValue(Object value) {
+        return toIntegralValue(value) != null;
+    }
+
+    private Long toIntegralValue(Object value) {
+        if (value instanceof Byte || value instanceof Short
+                || value instanceof Integer || value instanceof Long) {
+            return ((Number) value).longValue();
+        }
+        if (value instanceof Float || value instanceof Double) {
+            double number = ((Number) value).doubleValue();
+            if (Double.isFinite(number) && number == Math.rint(number)
+                    && number >= Long.MIN_VALUE && number <= Long.MAX_VALUE) {
+                return (long) number;
+            }
+            return null;
+        }
+        if (value instanceof String string) {
+            try {
+                return Long.parseLong(string.trim());
+            } catch (NumberFormatException ignored) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Loads the dynamic state list, preferring the new ordered {@code state_list}
+     * format and falling back to migrating the legacy parallel-list format
+     * ({@code states} / {@code interval_sequence} / {@code state_ids}).
+     * The legacy file on disk is left untouched; the new format is only written
+     * back the next time {@link #saveMap} runs.
+     */
+    private void loadDynamicStates(ConfigurationSection dynamicSection, DynamicData dynamicData) {
+        dynamicData.getStates().clear();
+        if (dynamicSection.isList("state_list")) {
+            for (Object raw : dynamicSection.getList("state_list", Collections.emptyList())) {
+                if (!(raw instanceof Map<?, ?> map)) {
+                    continue;
+                }
+                int id = toInt(map.get("id"), dynamicData.nextId());
+                String file = map.get("file") != null ? String.valueOf(map.get("file")) : null;
+                if (file == null || file.isBlank()) {
+                    continue;
+                }
+                String name = map.get("name") != null ? String.valueOf(map.get("name")) : null;
+                int interval = toInt(map.get("interval"), DynamicState.DEFAULT_INTERVAL_TICKS);
+                dynamicData.getStates().add(new DynamicState(id, file, name, interval));
+            }
+            return;
+        }
+
+        // Legacy migration: three parallel lists (states / interval_sequence / state_ids),
+        // historically not always kept in sync (addstate never appended to state_ids,
+        // delstate never removed from it). Pair up by index defensively, fabricate a
+        // synthetic id for any entry missing one, then sort by id ascending so playback
+        // order matches the old state_ids-driven order.
+        List<String> legacyStates = dynamicSection.getStringList("states");
+        List<Integer> legacyIntervals = dynamicSection.getIntegerList("interval_sequence");
+        List<Integer> legacyIds = dynamicSection.getIntegerList("state_ids");
+        if (legacyStates.isEmpty()) {
+            return;
+        }
+        int maxKnownId = 0;
+        for (Integer id : legacyIds) {
+            if (id != null && id > maxKnownId) {
+                maxKnownId = id;
+            }
+        }
+        int syntheticNext = maxKnownId + 1;
+        List<DynamicState> migrated = new ArrayList<>();
+        for (int i = 0; i < legacyStates.size(); i++) {
+            String file = legacyStates.get(i);
+            int interval = i < legacyIntervals.size() ? legacyIntervals.get(i) : DynamicState.DEFAULT_INTERVAL_TICKS;
+            int id = i < legacyIds.size() ? legacyIds.get(i) : syntheticNext++;
+            migrated.add(new DynamicState(id, file, null, interval));
+        }
+        migrated.sort((a, b) -> Integer.compare(a.getId(), b.getId()));
+        dynamicData.getStates().addAll(migrated);
+    }
+
+    private int toInt(Object value, int fallback) {
+        if (value instanceof Number number) {
+            return number.intValue();
+        }
+        if (value instanceof String s) {
+            try {
+                return Integer.parseInt(s.trim());
+            } catch (NumberFormatException ignored) {
+                return fallback;
+            }
+        }
+        return fallback;
     }
 
     public boolean isRegionTooLarge(Region region) {

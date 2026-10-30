@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="14241e73-9877-454d-9b65-d6e56ad554e9" name="更改" comment="dynamic">
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/SITParkourWarrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/SITParkourWarrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/command/DPCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/command/DPCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/config/PkwWorldManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/config/PkwWorldManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/course/CourseLayoutAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/course/CourseLayoutAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/editor/EditSessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/editor/EditSessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/ItemLockListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/ItemLockListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PkwItemInteractListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PkwItemInteractListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerJoinListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerMoveListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerMoveListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerQuitListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerQuitListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerRespawnListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerRespawnListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerTeleportListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/PlayerTeleportListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/WorldChangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/listener/WorldChangeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/map/DynamicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/map/DynamicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/map/MapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/map/MapManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/map/NodeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/map/NodeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/map/ParkourMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/map/ParkourMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/session/SessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/session/SessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/util/ItemUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/util/ItemUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/visibility/VisibilityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/club/sitmc/sitParkourWarrior/visibility/VisibilityManager.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="1674" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SITParkourWarrior" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SITParkourWarrior" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SITParkourWarrior" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="warrior/HEAD" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;beifengzzOvO&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SIT-Minecraft-Axolotl-Club/SITParkourWarrior.git&quot;,
+    &quot;accountId&quot;: &quot;5efa78a0-5cf0-4d58-97c5-cb0c9c644ea4&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;SIT-Minecraft-Axolotl-Club&quot;,
+    &quot;repository&quot;: &quot;SITParkourWarrior&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="3EFpRgyX5LUCi1oM9Oju5wwgSHz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.SITParkourWarrior-master [build].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;bf 上的 #2&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IntelliJ IDEA/projects/SITParkourWarrior-master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="SITParkourWarrior-master [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SITParkourWarrior-master" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SITParkourWarrior-master" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.SITParkourWarrior-master [build]" />
+        <item itemvalue="Gradle.SITParkourWarrior-master [build]" />
+        <item itemvalue="Gradle.SITParkourWarrior-master [build]" />
+        <item itemvalue="Gradle.SITParkourWarrior-master [build]" />
+        <item itemvalue="Gradle.SITParkourWarrior-master [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="14241e73-9877-454d-9b65-d6e56ad554e9" name="更改" comment="" />
+      <created>1779784164910</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779784164910</updated>
+    </task>
+    <task id="LOCAL-00001" summary="改">
+      <option name="closed" value="true" />
+      <created>1779860444711</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1779860444711</updated>
+    </task>
+    <task id="LOCAL-00002" summary="全局">
+      <option name="closed" value="true" />
+      <created>1779931471099</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1779931471099</updated>
+    </task>
+    <task id="LOCAL-00003" summary="全局组关完成">
+      <option name="closed" value="true" />
+      <created>1779969096955</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1779969096955</updated>
+    </task>
+    <task id="LOCAL-00004" summary="全局组关完成fixed">
+      <option name="closed" value="true" />
+      <created>1779969222753</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1779969222753</updated>
+    </task>
+    <task id="LOCAL-00005" summary="成绩榜">
+      <option name="closed" value="true" />
+      <created>1780109760949</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1780109760949</updated>
+    </task>
+    <task id="LOCAL-00006" summary="成绩榜">
+      <option name="closed" value="true" />
+      <created>1780205685154</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1780205685154</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix">
+      <option name="closed" value="true" />
+      <created>1780207316646</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1780207316646</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix">
+      <option name="closed" value="true" />
+      <created>1780213841322</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1780213841322</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix">
+      <option name="closed" value="true" />
+      <created>1780216398882</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1780216398882</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix">
+      <option name="closed" value="true" />
+      <created>1780363344370</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1780363344370</updated>
+    </task>
+    <task id="LOCAL-00011" summary="优化前">
+      <option name="closed" value="true" />
+      <created>1780887146304</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1780887146304</updated>
+    </task>
+    <task id="LOCAL-00012" summary="优化">
+      <option name="closed" value="true" />
+      <created>1780889759108</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1780889759108</updated>
+    </task>
+    <task id="LOCAL-00013" summary="1">
+      <option name="closed" value="true" />
+      <created>1782780901102</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1782780901102</updated>
+    </task>
+    <task id="LOCAL-00014" summary="menu">
+      <option name="closed" value="true" />
+      <created>1783397803077</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1783397803077</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix">
+      <option name="closed" value="true" />
+      <created>1784699691938</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1784699691938</updated>
+    </task>
+    <task id="LOCAL-00016" summary="dynamic">
+      <option name="closed" value="true" />
+      <created>1785577485421</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1785577485421</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="caabdc13-0c05-41f2-97c7-63040484dd19" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="bf" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="caabdc13-0c05-41f2-97c7-63040484dd19">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="改" />
+    <MESSAGE value="全局" />
+    <MESSAGE value="全局组关完成" />
+    <MESSAGE value="全局组关完成fixed" />
+    <MESSAGE value="优化前" />
+    <MESSAGE value="优化" />
+    <MESSAGE value="1" />
+    <MESSAGE value="menu" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="dynamic" />
+    <option name="LAST_COMMIT_MESSAGE" value="dynamic" />
+  </component>
+</project>

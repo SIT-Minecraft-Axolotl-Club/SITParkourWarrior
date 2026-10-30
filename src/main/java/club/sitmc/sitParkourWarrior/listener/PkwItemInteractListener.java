@@ -7,6 +7,7 @@ import club.sitmc.sitParkourWarrior.map.Deployment;
 import club.sitmc.sitParkourWarrior.map.MapManager;
 import club.sitmc.sitParkourWarrior.map.NodeType;
 import club.sitmc.sitParkourWarrior.map.ParkourMap;
+import club.sitmc.sitParkourWarrior.pkws.PkwsRaceManager;
 import club.sitmc.sitParkourWarrior.session.ParkourSession;
 import club.sitmc.sitParkourWarrior.session.RunProgress;
 import club.sitmc.sitParkourWarrior.session.SessionManager;
@@ -31,19 +32,33 @@ public class PkwItemInteractListener implements Listener {
     private final MapManager mapManager;
     private final PkwWorldManager pkwWorldManager;
     private final CourseLayoutAnalyzer courseLayoutAnalyzer;
+    private final PkwsRaceManager pkwsRaceManager;
 
     public PkwItemInteractListener(SessionManager sessionManager, MapManager mapManager,
-                                   PkwWorldManager pkwWorldManager, CourseLayoutAnalyzer courseLayoutAnalyzer) {
+                                   PkwWorldManager pkwWorldManager, CourseLayoutAnalyzer courseLayoutAnalyzer,
+                                   PkwsRaceManager pkwsRaceManager) {
         this.sessionManager = sessionManager;
         this.mapManager = mapManager;
         this.pkwWorldManager = pkwWorldManager;
         this.courseLayoutAnalyzer = courseLayoutAnalyzer;
+        this.pkwsRaceManager = pkwsRaceManager;
     }
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Player player = event.getPlayer();
+        if (pkwWorldManager.isPkwsWorld(player.getWorld())) {
+            ItemStack item = event.getItem();
+            if (item != null && ItemUtil.isSettlementItem(item)) {
+                event.setCancelled(true);
+                pkwsRaceManager.settleByItem(player);
+            } else if (item != null && ItemUtil.isQuitItem(item)) {
+                event.setCancelled(true);
+                pkwsRaceManager.abandon(player);
+            }
+            return;
+        }
         if (!pkwWorldManager.isPkwWorld(player.getWorld())) return;
 
         ItemStack item = event.getItem();
@@ -69,6 +84,7 @@ public class PkwItemInteractListener implements Listener {
 
         ParkourMap map = mapManager.getMap(session.getMapId());
         if (map == null) return;
+        if (map.getNodeType().isPkwsType()) return;
         Deployment dep = map.getDeployment(session.getDeploymentId());
         if (dep == null) return;
 

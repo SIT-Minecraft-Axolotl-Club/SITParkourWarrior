@@ -7,7 +7,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,6 +23,7 @@ public class PkwWorldManager {
     private final File configFile;
     private final Map<String, TimingMode> worldModes = new LinkedHashMap<>();
     private final Map<String, Integer> durations = new LinkedHashMap<>();
+    private final Set<String> pkwsWorlds = new LinkedHashSet<>();
 
     public PkwWorldManager(File dataFolder) {
         this.configFile = new File(dataFolder, "config.yml");
@@ -32,11 +35,23 @@ public class PkwWorldManager {
     private void load() {
         worldModes.clear();
         durations.clear();
+        pkwsWorlds.clear();
         if (!configFile.exists()) {
             save();
             return;
         }
+
         YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+
+        // PKWS worlds are deliberately stored separately from pkw-worlds.
+        // Accept both a simple list and a section/map for forward/backward
+        // compatibility with hand-written configuration files.
+        ConfigurationSection pkwsSection = config.getConfigurationSection("pkws-worlds");
+        if (pkwsSection != null) {
+            pkwsWorlds.addAll(pkwsSection.getKeys(false));
+        } else {
+            pkwsWorlds.addAll(config.getStringList("pkws-worlds"));
+        }
 
         // pkw-worlds: supports three formats (backward-compatible):
         // 1. Legacy section format (each value is a section; only mode is read; author/status safely ignored)
@@ -73,6 +88,12 @@ public class PkwWorldManager {
                 }
             }
         }
+
+        // Preserve the existing PKW meaning if an old/manual config happens
+        // to list the same world in both sections.  Runtime mutations already
+        // reject this combination, and this keeps the invariant true after a
+        // restart without changing any PKW world into PKWS.
+        pkwsWorlds.removeAll(worldModes.keySet());
     }
 
     private void save() {
@@ -92,6 +113,9 @@ public class PkwWorldManager {
             }
             config.set("pkw-world-durations", durMap);
         }
+        if (!pkwsWorlds.isEmpty()) {
+            config.set("pkws-worlds", new ArrayList<>(pkwsWorlds));
+        }
 
         try {
             config.save(configFile);
@@ -110,6 +134,14 @@ public class PkwWorldManager {
         return world != null && isPkwWorld(world.getName());
     }
 
+    public boolean isPkwsWorld(String worldName) {
+        return worldName != null && pkwsWorlds.contains(worldName);
+    }
+
+    public boolean isPkwsWorld(World world) {
+        return world != null && isPkwsWorld(world.getName());
+    }
+
     public TimingMode getTimingMode(String worldName) {
         TimingMode mode = worldModes.get(worldName);
         return mode != null ? mode : TimingMode.COUNTUP;
@@ -123,6 +155,10 @@ public class PkwWorldManager {
         return Collections.unmodifiableSet(worldModes.keySet());
     }
 
+    public Set<String> getPkwsWorlds() {
+        return Collections.unmodifiableSet(pkwsWorlds);
+    }
+
     public int getCountdownDuration(String worldName) {
         Integer d = durations.get(worldName);
         return d != null ? d : 0;
@@ -133,9 +169,25 @@ public class PkwWorldManager {
     public boolean add(String worldName, TimingMode mode) {
         if (worldName == null || worldName.isBlank()) return false;
         if (worldModes.containsKey(worldName)) return false;
+        if (pkwsWorlds.contains(worldName)) return false;
         worldModes.put(worldName, mode != null ? mode : TimingMode.COUNTUP);
         save();
         return true;
+    }
+
+    public boolean addPkwsWorld(String worldName) {
+        if (worldName == null || worldName.isBlank()) return false;
+        if (pkwsWorlds.contains(worldName) || worldModes.containsKey(worldName)) return false;
+        pkwsWorlds.add(worldName);
+        save();
+        return true;
+    }
+
+    public boolean removePkwsWorld(String worldName) {
+        if (worldName == null) return false;
+        boolean removed = pkwsWorlds.remove(worldName);
+        if (removed) save();
+        return removed;
     }
 
     public boolean setMode(String worldName, TimingMode mode) {

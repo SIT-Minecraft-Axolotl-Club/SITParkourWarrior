@@ -23,7 +23,7 @@ public class ItemLockListener implements Listener {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
-        if (!pkwWorldManager.isPkwWorld(event.getPlayer().getWorld())) return;
+        if (!isProtectedWorld(event.getPlayer())) return;
         if (ItemUtil.isPkwItem(event.getItemDrop().getItemStack())) {
             event.setCancelled(true);
         }
@@ -32,7 +32,7 @@ public class ItemLockListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player player)) return;
-        if (!pkwWorldManager.isPkwWorld(player.getWorld())) return;
+        if (!isProtectedWorld(player)) return;
 
         ItemStack current = event.getCurrentItem();
         ItemStack cursor = event.getCursor();
@@ -59,9 +59,14 @@ public class ItemLockListener implements Listener {
     @EventHandler
     public void onDrag(InventoryDragEvent event) {
         if (!(event.getWhoClicked() instanceof Player player)) return;
-        if (!pkwWorldManager.isPkwWorld(player.getWorld())) return;
+        if (!isProtectedWorld(player)) return;
         if (ItemUtil.isPkwItem(event.getOldCursor())) {
             event.setCancelled(true);
         }
+    }
+
+    private boolean isProtectedWorld(Player player) {
+        return pkwWorldManager.isPkwWorld(player.getWorld())
+                || pkwWorldManager.isPkwsWorld(player.getWorld());
     }
 }

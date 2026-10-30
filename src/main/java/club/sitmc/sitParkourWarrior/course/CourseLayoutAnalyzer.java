@@ -127,6 +127,11 @@ public class CourseLayoutAnalyzer {
     private java.util.List<DeployedNode> collectDeployedForWorld(String worldName) {
         java.util.List<DeployedNode> list = new ArrayList<>();
         for (ParkourMap map : mapManager.getMaps().values()) {
+            // PKWS nodes have their own future track model.  They must never
+            // enter the legacy PKW course.yml or its runtime bindings.
+            if (map.getNodeType().isPkwsType()) {
+                continue;
+            }
             for (Deployment dep : map.getDeployments()) {
                 String w = inferWorld(map, dep);
                 if (w != null && w.equals(worldName)) {
@@ -268,6 +273,12 @@ public class CourseLayoutAnalyzer {
                 case FORK:         forks.add(n); break;
                 case GLOBAL_END:   globalEnds.add(n); break;
                 case BRANCH_END:   branchEnds.add(n); break;
+                // Defensive cases: collectDeployedForWorld already filters
+                // these, so a PKWS node can never affect this analysis.
+                case PKWS_RELAY:
+                case PKWS_START:
+                case PKWS_END:
+                    break;
             }
         }
 

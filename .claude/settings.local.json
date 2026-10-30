@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem *)",
+      "Bash(Select-Object -First 20 FullName)",
+      "Bash(mvn compile *)",
+      "Bash(Select-Object -Last 40)",
+      "Bash(where mvn *)",
+      "Bash(where mvnw *)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/zzh15/**)",
+      "Read(//c/Users/zzh15/.m2/**)",
+      "Bash(git *)",
+      "Bash(Select-Object -First 10)",
+      "Bash(./gradlew compileJava)",
+      "Bash(Select-String \"feature/node-graph\")",
+      "Bash(Test-Path \"src/main/java/club/sitmc/sitParkourWarrior/map/EndTier.java\")",
+      "Bash(Test-Path \"src/main/java/club/sitmc/sitParkourWarrior/session/RunProgress.java\")",
+      "Bash(New-Item *)",
+      "Bash(Select-Object Name)",
+      "Bash(findstr /N \"findDeploymentByEntryPoint\\\\|GLOBAL_START\\\\|NodeType\")",
+      "PowerShell(.\\\\gradlew.bat compileJava 2>&1)",
+      "Bash(Select-Object -First 80)",
+      "PowerShell(& \"D:\\\\IntelliJ IDEA\\\\projects\\\\SITParkourWarrior-master\\\\gradlew.bat\" compileJava 2>&1)",
+      "Bash(xargs grep -l \"dynamic\\\\|Dynamic\" -i)",
+      "Bash(xargs grep -l \"dynamic\" -il)",
+      "Bash(./gradlew compileJava -q)"
+    ]
+  }
+}

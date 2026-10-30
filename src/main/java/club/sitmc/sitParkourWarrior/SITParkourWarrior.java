@@ -4,10 +4,16 @@ import club.sitmc.sitParkourWarrior.board.BoardData;
 import club.sitmc.sitParkourWarrior.board.BoardManager;
 import club.sitmc.sitParkourWarrior.board.BoardRenderer;
 import club.sitmc.sitParkourWarrior.command.DPCommand;
+import club.sitmc.sitParkourWarrior.command.PkwsStartCountdownHints;
 import club.sitmc.sitParkourWarrior.config.CountdownScoringConfig;
 import club.sitmc.sitParkourWarrior.config.PkwWorldManager;
 import club.sitmc.sitParkourWarrior.config.TimingMode;
 import club.sitmc.sitParkourWarrior.course.CourseLayoutAnalyzer;
+import club.sitmc.sitParkourWarrior.editor.EditSessionManager;
+import club.sitmc.sitParkourWarrior.listener.EditControlListener;
+import club.sitmc.sitParkourWarrior.listener.EditRegionChangeListener;
+import club.sitmc.sitParkourWarrior.listener.EditSessionCleanupListener;
+import club.sitmc.sitParkourWarrior.listener.StateListListener;
 import club.sitmc.sitParkourWarrior.listener.ItemLockListener;
 import club.sitmc.sitParkourWarrior.listener.PkwItemInteractListener;
 import club.sitmc.sitParkourWarrior.listener.PlayerDeathListener;
@@ -16,11 +22,22 @@ import club.sitmc.sitParkourWarrior.listener.PlayerMoveListener;
 import club.sitmc.sitParkourWarrior.listener.PlayerQuitListener;
 import club.sitmc.sitParkourWarrior.listener.PlayerRespawnListener;
 import club.sitmc.sitParkourWarrior.listener.PlayerTeleportListener;
+import club.sitmc.sitParkourWarrior.listener.PkwsConfigListener;
+import club.sitmc.sitParkourWarrior.listener.PkwsPracticeGuardListener;
+import club.sitmc.sitParkourWarrior.listener.PkwsRangeListener;
+import club.sitmc.sitParkourWarrior.listener.PkwsWorldLoadListener;
 import club.sitmc.sitParkourWarrior.listener.SelectionToolListener;
 import club.sitmc.sitParkourWarrior.listener.WorldChangeListener;
 import club.sitmc.sitParkourWarrior.map.DynamicService;
 import club.sitmc.sitParkourWarrior.map.MapManager;
 import club.sitmc.sitParkourWarrior.map.SelectionManager;
+import club.sitmc.sitParkourWarrior.pkws.PkwsGenerationService;
+import club.sitmc.sitParkourWarrior.pkws.PkwsDisconnectStore;
+import club.sitmc.sitParkourWarrior.pkws.PkwsRangeConfig;
+import club.sitmc.sitParkourWarrior.pkws.PkwsRaceManager;
+import club.sitmc.sitParkourWarrior.pkws.PkwsTrackStore;
+import club.sitmc.sitParkourWarrior.pkws.PkwsTemplateStore;
+import club.sitmc.sitParkourWarrior.pkws.PkwsWinsStore;
 import club.sitmc.sitParkourWarrior.records.RecordsManager;
 import club.sitmc.sitParkourWarrior.session.RunProgress;
 import club.sitmc.sitParkourWarrior.visibility.VisibilityManager;
@@ -57,15 +74,30 @@ public final class SITParkourWarrior extends JavaPlugin {
     private CountdownScoringConfig countdownScoring;
     private BoardManager boardManager;
     private VisibilityManager visibilityManager;
+    private EditSessionManager editSessionManager;
+    private PkwsRangeConfig pkwsRangeConfig;
+    private PkwsGenerationService pkwsGenerationService;
+    private PkwsTrackStore pkwsTrackStore;
+    private PkwsTemplateStore pkwsTemplateStore;
+    private PkwsWinsStore pkwsWinsStore;
+    private PkwsDisconnectStore pkwsDisconnectStore;
+    private PkwsRaceManager pkwsRaceManager;
     private BukkitTask actionBarTask;
     private BukkitTask boardRefreshTask;
     private BukkitTask visibilityTask;
+    private BukkitTask editAutosaveTask;
+    private static final long EDIT_AUTOSAVE_INTERVAL_TICKS = 20L * 60; // 60 seconds
     private final AtomicBoolean worldInitDone = new AtomicBoolean(false);
     private static final long FALLBACK_DELAY_TICKS = 100L;
 
     @Override
     public void onEnable() {
         this.mapManager = new MapManager(this);
+        this.pkwsRangeConfig = new PkwsRangeConfig(getDataFolder(), getLogger());
+        this.pkwsTrackStore = new PkwsTrackStore(getDataFolder(), getLogger());
+        this.pkwsTemplateStore = new PkwsTemplateStore(getDataFolder(), getLogger());
+        this.pkwsWinsStore = new PkwsWinsStore(getDataFolder(), getLogger());
+        this.pkwsDisconnectStore = new PkwsDisconnectStore(getDataFolder(), getLogger());
         this.dynamicService = new DynamicService(this, mapManager);
         this.particleService = new ParticleService(this);
         this.selectionManager = new SelectionManager(mapManager, particleService);
@@ -77,30 +109,59 @@ public final class SITParkourWarrior extends JavaPlugin {
         this.boardManager.init(new NamespacedKey(this, BoardManager.class.getSimpleName()));
         this.courseLayoutAnalyzer = new CourseLayoutAnalyzer(mapManager, pkwWorldManager, getDataFolder());
         this.sessionManager = new SessionManager(this, mapManager, dynamicService, recordsManager, pkwWorldManager, courseLayoutAnalyzer, countdownScoring, null);
+        this.pkwsGenerationService = new PkwsGenerationService(this, mapManager,
+                pkwsRangeConfig, pkwsTrackStore, dynamicService, sessionManager);
         this.visibilityManager = new VisibilityManager(this, pkwWorldManager, sessionManager);
+        this.pkwsRaceManager = new PkwsRaceManager(this, pkwWorldManager, mapManager,
+                pkwsTrackStore, pkwsRangeConfig, pkwsWinsStore, visibilityManager,
+                dynamicService, sessionManager, pkwsDisconnectStore);
+        this.visibilityManager.setPkwsRaceManager(pkwsRaceManager);
         sessionManager.setVisibilityManager(visibilityManager);
+        this.editSessionManager = new EditSessionManager(this, mapManager, selectionManager);
         this.particleService.start(selectionManager);
         mapManager.loadAll();
         dynamicService.startAllDeployed();
+        pkwsRaceManager.initializeLoadedWorlds();
+        applyGamerulesToAllPkwWorlds();
         // 世界依赖初始化改为事件驱动 + 兜底，不在 onEnable 阶段提前执行
         tryRegisterManagedWorldsLoadedListener();
         scheduleWorldInitFallback();
 
-        getServer().getPluginManager().registerEvents(new PlayerMoveListener(sessionManager, mapManager, selectionManager, pkwWorldManager, courseLayoutAnalyzer, visibilityManager), this);
-        getServer().getPluginManager().registerEvents(new PlayerQuitListener(sessionManager, pkwWorldManager, visibilityManager), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(sessionManager, pkwWorldManager, recordsManager), this);
+        getServer().getPluginManager().registerEvents(new PlayerMoveListener(sessionManager, mapManager, selectionManager, pkwWorldManager, courseLayoutAnalyzer, visibilityManager, pkwsRaceManager), this);
+        getServer().getPluginManager().registerEvents(new PlayerQuitListener(sessionManager, pkwWorldManager, visibilityManager, pkwsRaceManager), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(sessionManager, pkwWorldManager, recordsManager, pkwsRaceManager), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerRespawnListener(sessionManager), this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawnListener(sessionManager, pkwsRaceManager), this);
         getServer().getPluginManager().registerEvents(new SelectionToolListener(selectionManager), this);
         getServer().getPluginManager().registerEvents(new ItemLockListener(pkwWorldManager), this);
-        getServer().getPluginManager().registerEvents(new WorldChangeListener(pkwWorldManager, sessionManager, recordsManager, visibilityManager), this);
-        getServer().getPluginManager().registerEvents(new PkwItemInteractListener(sessionManager, mapManager, pkwWorldManager, courseLayoutAnalyzer), this);
-        getServer().getPluginManager().registerEvents(new PlayerTeleportListener(sessionManager, pkwWorldManager, visibilityManager), this);
+        getServer().getPluginManager().registerEvents(new WorldChangeListener(pkwWorldManager, sessionManager, recordsManager, visibilityManager, pkwsRaceManager), this);
+        getServer().getPluginManager().registerEvents(new PkwItemInteractListener(sessionManager, mapManager, pkwWorldManager, courseLayoutAnalyzer, pkwsRaceManager), this);
+        getServer().getPluginManager().registerEvents(new PlayerTeleportListener(sessionManager, pkwWorldManager,
+                visibilityManager, pkwsRaceManager), this);
+        getServer().getPluginManager().registerEvents(new PkwsPracticeGuardListener(this), this);
+        // PKWS 世界可能在本插件启用之后才加载，那时补一次“重启后起点关闭”的复位。
+        getServer().getPluginManager().registerEvents(
+                new PkwsWorldLoadListener(pkwWorldManager, pkwsRaceManager), this);
+        getServer().getPluginManager().registerEvents(new EditControlListener(editSessionManager, mapManager, this), this);
+        getServer().getPluginManager().registerEvents(new EditRegionChangeListener(selectionManager, editSessionManager), this);
+        getServer().getPluginManager().registerEvents(new EditSessionCleanupListener(editSessionManager, selectionManager), this);
+        // Phase 2 rev 2: state papers are display-only — rename anvil disabled.
+        // getServer().getPluginManager().registerEvents(new EditPaperRenameListener(this, editSessionManager, mapManager), this);
+        getServer().getPluginManager().registerEvents(new StateListListener(editSessionManager, mapManager), this);
+        getServer().getPluginManager().registerEvents(new PkwsConfigListener(mapManager), this);
+        getServer().getPluginManager().registerEvents(
+                new PkwsRangeListener(this, pkwsRangeConfig, pkwsTemplateStore, mapManager), this);
 
-        DPCommand command = new DPCommand(mapManager, sessionManager, selectionManager, dynamicService, courseLayoutAnalyzer, pkwWorldManager, recordsManager, countdownScoring, boardManager);
+        DPCommand command = new DPCommand(mapManager, sessionManager, selectionManager, dynamicService,
+                courseLayoutAnalyzer, pkwWorldManager, recordsManager, countdownScoring, boardManager,
+                editSessionManager, pkwsRangeConfig, pkwsGenerationService,
+                pkwsRaceManager, pkwsWinsStore, pkwsTemplateStore);
+        // 起点开赛倒计时的秒数可自由指定（默认 10 秒）；这一层只统一
+        // /sitpkw pkws start countdown 的提示语与秒数补全，其余命令仍由 DPCommand 处理。
+        PkwsStartCountdownHints commandHints = new PkwsStartCountdownHints(command, pkwsRangeConfig);
         if (getCommand("sitpkw") != null) {
-            getCommand("sitpkw").setExecutor(command);
-            getCommand("sitpkw").setTabCompleter(command);
+            getCommand("sitpkw").setExecutor(commandHints);
+            getCommand("sitpkw").setTabCompleter(commandHints);
         } else {
             getLogger().warning("Command sitpkw not found in plugin.yml");
         }
@@ -108,12 +169,42 @@ public final class SITParkourWarrior extends JavaPlugin {
         startActionBarTimer();
         // boardManager.restoreAllEntities() 移至 initWorldDependent()，等世界就绪后再还原
         startBoardRefreshTask();
-        visibilityTask = Bukkit.getScheduler().runTaskTimer(this, () -> visibilityManager.scanAndUpdate(), 0L, 5L);
+        visibilityTask = Bukkit.getScheduler().runTaskTimer(this, () -> {
+            pkwsRaceManager.enforcePkwsRestrictions();
+            visibilityManager.scanAndUpdate();
+        }, 0L, 5L);
+        editAutosaveTask = Bukkit.getScheduler().runTaskTimer(this, () -> editSessionManager.autosaveTick(),
+                EDIT_AUTOSAVE_INTERVAL_TICKS, EDIT_AUTOSAVE_INTERVAL_TICKS);
+    }
+
+    /**
+     * Returns whether a world is configured as a PKWS world.
+     * This method is intentionally safe for reflection calls from optional plugins.
+     */
+    public boolean isPkwsWorld(String worldName) {
+        try {
+            if (worldName == null || worldName.isBlank() || pkwWorldManager == null) {
+                return false;
+            }
+            return pkwWorldManager.isPkwsWorld(worldName);
+        } catch (Exception ignored) {
+            return false;
+        }
     }
 
     private void startActionBarTimer() {
         actionBarTask = Bukkit.getScheduler().runTaskTimer(this, () -> {
             for (org.bukkit.entity.Player player : Bukkit.getOnlinePlayers()) {
+                if (pkwWorldManager.isPkwsWorld(player.getWorld())) {
+                    if (pkwsRaceManager.isRunning(player.getWorld().getName())) {
+                        String status = pkwsRaceManager.getActionBarStatus(player);
+                        if (!status.isEmpty()) {
+                            player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                                    new TextComponent(status));
+                        }
+                    }
+                    continue;
+                }
                 if (!pkwWorldManager.isPkwWorld(player.getWorld())) continue;
                 RunProgress rp = sessionManager.getRunProgress(player.getUniqueId());
                 if (rp == null) continue;
@@ -149,6 +240,9 @@ public final class SITParkourWarrior extends JavaPlugin {
 
     private void applyGamerulesToAllPkwWorlds() {
         for (String worldName : pkwWorldManager.getWorlds()) {
+            applyGamerulesToWorld(worldName);
+        }
+        for (String worldName : pkwWorldManager.getPkwsWorlds()) {
             applyGamerulesToWorld(worldName);
         }
     }
@@ -257,6 +351,7 @@ public final class SITParkourWarrior extends JavaPlugin {
 
     private void startBoardRefreshTask() {
         boardManager.setOnBoardChanged(() -> refreshAllBoards());
+        recordsManager.setOnLeaderboardChanged(this::refreshAllBoards);
         boardRefreshTask = Bukkit.getScheduler().runTaskTimer(this, this::scanAndRefreshBoards, 0L, 10L);
     }
 
@@ -337,6 +432,18 @@ public final class SITParkourWarrior extends JavaPlugin {
         }
         if (actionBarTask != null) {
             actionBarTask.cancel();
+        }
+        if (editAutosaveTask != null) {
+            editAutosaveTask.cancel();
+        }
+        if (editSessionManager != null) {
+            editSessionManager.shutdown();
+        }
+        if (pkwsRaceManager != null) {
+            pkwsRaceManager.shutdown();
+        }
+        if (pkwsGenerationService != null) {
+            pkwsGenerationService.shutdown();
         }
         if (dynamicService != null) {
             dynamicService.stopAll();

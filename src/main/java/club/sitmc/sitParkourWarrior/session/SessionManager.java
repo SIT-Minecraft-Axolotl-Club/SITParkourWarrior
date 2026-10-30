@@ -80,6 +80,11 @@ public class SessionManager {
         if (player == null || map == null || deployment == null) {
             return false;
         }
+        // PKWS nodes are definitions for a later PKWS runner, not playable
+        // PKW course nodes.  Keep them out of sessions/records entirely.
+        if (map.getNodeType().isPkwsType()) {
+            return false;
+        }
         if (sessions.containsKey(player.getUniqueId())) {
             Msg.send(player, "你已经在游玩中，先退出当前关卡。");
             return false;
@@ -190,15 +195,9 @@ public class SessionManager {
                 }
             }
             long durationMs = session.getElapsedMs(System.currentTimeMillis());
-            String timeStr = club.sitmc.sitParkourWarrior.board.BoardRenderer.formatTime(durationMs);
-            if (map != null) {
-                String coloredTitle = map.getDifficulty().getTitleColor() + map.getTitle();
-                Msg.send(player, "您已通过 " + coloredTitle + "（用时：" + timeStr + "）。");
-            } else {
-                Msg.send(player, "您已通过关卡（用时：" + timeStr + "）。");
-            }
-            // Sound + particle
-            playCompletionEffects(player);
+            // Shared PKW/PKWS presentation: one completion message containing
+            // the measured duration, followed by the standard effects.
+            sendLevelCompletion(player, map, durationMs);
             session.setCompleted(true);
             session.setState(SessionState.AWAITING_HANDOFF);
             // Keep deathLineY unchanged (stay at completed node's region minY).
@@ -313,11 +312,13 @@ public class SessionManager {
         progress.addEndTierMedals(bonus);
         int totalMedals = progress.getMedals();
 
-        // Determine eligible tiers (downward-compatible)
+        String worldName = player.getWorld().getName();
         java.util.List<String> eligibleTiers = new java.util.ArrayList<>();
-        if (totalMedals >= 21) eligibleTiers.add("expect");
-        if (totalMedals >= 16) eligibleTiers.add("advance");
-        eligibleTiers.add("standard");
+        for (String candidate : new String[]{"expect", "advance", "standard"}) {
+            if (totalMedals >= recordsManager.getCountupThreshold(worldName, candidate)) {
+                eligibleTiers.add(candidate);
+            }
+        }
 
         // Tier display string
         String tierDisplay = String.join("/", eligibleTiers);
@@ -326,13 +327,8 @@ public class SessionManager {
         // Archive to records (COUNTUP only) — each tier independently
         boolean isPb = false;
         if (pkwWorldManager.getTimingMode(player.getWorld()) == TimingMode.COUNTUP) {
-            String worldName = player.getWorld().getName();
-            for (String t : eligibleTiers) {
-                if (recordsManager.saveRecord(worldName, t,
-                        player.getUniqueId(), player.getName(), elapsedMs, totalMedals)) {
-                    isPb = true;
-                }
-            }
+            isPb = recordsManager.saveCountupRecord(worldName, player.getUniqueId(),
+                    player.getName(), elapsedMs, totalMedals);
             recordsManager.clearActiveRun(worldName, player.getUniqueId());
         }
 
@@ -567,6 +563,10 @@ public class SessionManager {
      */
     public String restoreSessionFromSaved(Player player, club.sitmc.sitParkourWarrior.records.RecordsManager.SavedRunData saved) {
         if (!saved.hasSessionState()) return null;
+        ParkourMap savedMap = mapManager.getMap(saved.sessionMapId);
+        if (savedMap == null || savedMap.getNodeType().isPkwsType()) {
+            return null;
+        }
 
         ParkourSession restored = new ParkourSession(
                 player.getUniqueId(), saved.sessionMapId, saved.sessionDeploymentId,
@@ -774,6 +774,33 @@ public class SessionManager {
     }
 
     /**
+     * Shared single-level completion presentation for legacy PKW and PKWS.
+     * Medal/record changes deliberately remain in the PKW caller; PKWS only
+     * reuses the elapsed-time format, message and completion effects.
+     */
+    public void sendLevelCompletion(Player player, ParkourMap map, long durationMs) {
+        if (player == null) {
+            return;
+        }
+        String timeStr = club.sitmc.sitParkourWarrior.board.BoardRenderer.formatTime(durationMs);
+        if (map != null) {
+            String coloredTitle = map.getDifficulty().getTitleColor() + map.getTitle();
+            Msg.send(player, "您已通过 " + coloredTitle + "（用时：" + timeStr + "）。");
+        } else {
+            Msg.send(player, "您已通过关卡（用时：" + timeStr + "）。");
+        }
+        playCompletionEffects(player);
+    }
+
+    /** Reuse the standard per-level completion effects for PKWS sub-levels
+     * without creating a legacy PKW session or awarding legacy medals. */
+    public void playLevelCompletionEffects(Player player) {
+        if (player != null) {
+            playCompletionEffects(player);
+        }
+    }
+
+    /**
      * 发送关卡标题：将 title 移到较小的 subtitle 行显示，
      * 原来的 subtitle 延迟 2 秒（40 tick）后出现。
      */
@@ -826,6 +853,10 @@ public class SessionManager {
     public void handoffToNextDeployment(Player player, ParkourSession session,
                                         ParkourMap nextMap, Deployment nextDeployment,
                                         Location entryPoint) {
+        if (player == null || session == null || nextMap == null || nextDeployment == null
+                || entryPoint == null || nextMap.getNodeType().isPkwsType()) {
+            return;
+        }
         // Update session to point to the new deployment.
         ParkourSession updated = new ParkourSession(
                 player.getUniqueId(),
@@ -863,6 +894,10 @@ public class SessionManager {
      * has no current session a fresh one is created.
      */
     public void handoffToFork(Player player, ParkourMap forkMap, Deployment forkDeployment, Location forkPoint) {
+        if (player == null || forkMap == null || forkDeployment == null || forkPoint == null
+                || forkMap.getNodeType().isPkwsType()) {
+            return;
+        }
         ParkourSession old = sessions.get(player.getUniqueId());
         ParkourSession updated = new ParkourSession(
                 player.getUniqueId(),

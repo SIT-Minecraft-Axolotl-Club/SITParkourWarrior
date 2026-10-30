@@ -2,6 +2,7 @@ package club.sitmc.sitParkourWarrior.listener;
 
 import club.sitmc.sitParkourWarrior.config.PkwWorldManager;
 import club.sitmc.sitParkourWarrior.records.RecordsManager;
+import club.sitmc.sitParkourWarrior.pkws.PkwsRaceManager;
 import club.sitmc.sitParkourWarrior.session.RunProgress;
 import club.sitmc.sitParkourWarrior.session.SessionManager;
 import club.sitmc.sitParkourWarrior.util.ItemUtil;
@@ -26,14 +27,17 @@ public class WorldChangeListener implements Listener {
     private final SessionManager sessionManager;
     private final RecordsManager recordsManager;
     private final VisibilityManager visibilityManager;
+    private final PkwsRaceManager pkwsRaceManager;
 
     public WorldChangeListener(PkwWorldManager pkwWorldManager,
                                SessionManager sessionManager, RecordsManager recordsManager,
-                               VisibilityManager visibilityManager) {
+                               VisibilityManager visibilityManager,
+                               PkwsRaceManager pkwsRaceManager) {
         this.pkwWorldManager = pkwWorldManager;
         this.sessionManager = sessionManager;
         this.recordsManager = recordsManager;
         this.visibilityManager = visibilityManager;
+        this.pkwsRaceManager = pkwsRaceManager;
     }
 
     @EventHandler
@@ -41,12 +45,18 @@ public class WorldChangeListener implements Listener {
         Player player = event.getPlayer();
         boolean fromPkw = pkwWorldManager.isPkwWorld(event.getFrom());
         boolean toPkw = pkwWorldManager.isPkwWorld(player.getWorld());
+        boolean fromPkws = pkwWorldManager.isPkwsWorld(event.getFrom());
+        boolean toPkws = pkwWorldManager.isPkwsWorld(player.getWorld());
 
         if (fromPkw) {
             visibilityManager.cleanupPlayer(player);
             // Leaving a PKW world: save active run (with session snapshot) and clean up
             sessionManager.saveAndClearActiveRun(player);
             removePkwItems(player);
+        }
+
+        if (fromPkws) {
+            pkwsRaceManager.onPlayerLeaveWorld(player, event.getFrom().getName());
         }
 
         if (toPkw) {
@@ -69,6 +79,10 @@ public class WorldChangeListener implements Listener {
                 // Teleport player to last known location in this world
                 teleportToSavedLocation(player, saved);
             }
+        }
+
+        if (toPkws) {
+            pkwsRaceManager.onPlayerEnterWorld(player);
         }
     }
 

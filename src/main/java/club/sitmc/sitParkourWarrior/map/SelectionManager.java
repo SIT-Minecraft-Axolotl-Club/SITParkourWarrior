@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -85,6 +84,24 @@ public class SelectionManager {
         return true;
     }
 
+    /**
+     * Restores a map's already-saved template region into the player's pos1/pos2
+     * cache (e.g. on entering edit mode), so the existing particle boundary display
+     * and dynamic-state tooling immediately reflect it without a manual reselect.
+     * No-ops silently if the region's world isn't loaded.
+     */
+    public void restoreRegionSelection(Player player, Region region) {
+        if (player == null || region == null) {
+            return;
+        }
+        org.bukkit.World world = org.bukkit.Bukkit.getWorld(region.getWorldName());
+        if (world == null) {
+            return;
+        }
+        pos1Cache.put(player.getUniqueId(), new Location(world, region.getMinX(), region.getMinY(), region.getMinZ()));
+        pos2Cache.put(player.getUniqueId(), new Location(world, region.getMaxX(), region.getMaxY(), region.getMaxZ()));
+    }
+
     public Region getSelectionRegion(Player player) {
         if (player == null) {
             return null;
@@ -137,19 +154,17 @@ public class SelectionManager {
         return true;
     }
 
+    /**
+     * Legacy /sitpkw save &lt;seqId&gt; entry point: overwrites the schematic file of the
+     * state already identified by {@code seqId} in place (position, name and interval
+     * untouched), or appends a brand-new state with that id to the end of the list.
+     */
     private void upsertState(DynamicData data, int seqId, String fileName) {
-        List<Integer> ids = data.getStateIds();
-        List<String> states = data.getStates();
-        int index = ids.indexOf(seqId);
-        if (index >= 0) {
-            states.set(index, fileName);
+        DynamicState existing = data.findById(seqId);
+        if (existing != null) {
+            existing.setFile(fileName);
             return;
         }
-        int insertAt = 0;
-        while (insertAt < ids.size() && ids.get(insertAt) < seqId) {
-            insertAt++;
-        }
-        ids.add(insertAt, seqId);
-        states.add(insertAt, fileName);
+        data.getStates().add(new DynamicState(seqId, fileName, null, DynamicState.DEFAULT_INTERVAL_TICKS));
     }
 }

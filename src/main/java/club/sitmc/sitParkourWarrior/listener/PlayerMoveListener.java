@@ -9,6 +9,7 @@ import club.sitmc.sitParkourWarrior.map.NodeType;
 import club.sitmc.sitParkourWarrior.map.ParkourMap;
 import club.sitmc.sitParkourWarrior.map.Region;
 import club.sitmc.sitParkourWarrior.map.SelectionManager;
+import club.sitmc.sitParkourWarrior.pkws.PkwsRaceManager;
 import club.sitmc.sitParkourWarrior.session.ParkourSession;
 import club.sitmc.sitParkourWarrior.session.SessionManager;
 import club.sitmc.sitParkourWarrior.session.SessionState;
@@ -35,16 +36,19 @@ public class PlayerMoveListener implements Listener {
     private final PkwWorldManager pkwWorldManager;
     private final CourseLayoutAnalyzer courseLayoutAnalyzer;
     private final VisibilityManager visibilityManager;
+    private final PkwsRaceManager pkwsRaceManager;
     public PlayerMoveListener(SessionManager sessionManager, MapManager mapManager,
                               SelectionManager selectionManager, PkwWorldManager pkwWorldManager,
                               CourseLayoutAnalyzer courseLayoutAnalyzer,
-                              VisibilityManager visibilityManager) {
+                              VisibilityManager visibilityManager,
+                              PkwsRaceManager pkwsRaceManager) {
         this.sessionManager = sessionManager;
         this.mapManager = mapManager;
         this.selectionManager = selectionManager;
         this.pkwWorldManager = pkwWorldManager;
         this.courseLayoutAnalyzer = courseLayoutAnalyzer;
         this.visibilityManager = visibilityManager;
+        this.pkwsRaceManager = pkwsRaceManager;
     }
 
     @EventHandler
@@ -57,6 +61,12 @@ public class PlayerMoveListener implements Listener {
 
         boolean isPkw = pkwWorldManager.isPkwWorld(to.getWorld());
         Player player = event.getPlayer();
+        boolean isPkws = pkwWorldManager.isPkwsWorld(to.getWorld());
+        if (isPkws) {
+            // Practice mode is never valid in PKWS, including head-only
+            // movement events that would otherwise return below.
+            clearSpecialMode(player);
+        }
 
         if (from.getBlockX() == to.getBlockX()
                 && from.getBlockY() == to.getBlockY()
@@ -68,6 +78,13 @@ public class PlayerMoveListener implements Listener {
             return;
         }
 
+        if (isPkws) {
+            // Strict world split: PKWS never enters handlePkwMove or the
+            // non-PKW simple-level state machine.
+            pkwsRaceManager.handleMove(player, from, to);
+            return;
+        }
+
         if (isPkw) {
             handlePkwMove(player, from, to);
         } else {
@@ -75,13 +92,31 @@ public class PlayerMoveListener implements Listener {
         }
     }
 
-    // ============ GameMode change → abandon run on switch to spectator ============
+    // ============ GameMode change → a spectator leaves the race in place ============
 
     @EventHandler
     public void onGameModeChange(PlayerGameModeChangeEvent event) {
+        Player player = event.getPlayer();
+        if (pkwWorldManager.isPkwsWorld(player.getWorld())) {
+            // Segment may toggle its marker together with a gamemode change;
+            // remove it before any PKWS observer/participant handling.
+            clearSpecialMode(player);
+        }
         if (event.getNewGameMode() != GameMode.SPECTATOR) return;
 
-        Player player = event.getPlayer();
+        if (pkwsRaceManager != null && pkwWorldManager.isPkwsWorld(player.getWorld())) {
+            // A contestant who switches to spectator is removed from the race.
+            // If the race continues, the event stays uncancelled so he keeps
+            // spectating in place and stays a non-contestant.
+            String worldName = player.getWorld().getName();
+            boolean raceWasRunning = pkwsRaceManager.isRunning(worldName);
+            pkwsRaceManager.onPlayerBecameExempt(player);
+            if (raceWasRunning && !pkwsRaceManager.isRunning(worldName)) {
+                // The unified no-contest cleanup restores Adventure mode.
+                // Cancel this final switch so the event cannot overwrite it.
+                event.setCancelled(true);
+            }
+        }
         // Abandon any active run (full-course timing) — quitRun cleans up
         // RunProgress and removes visibility effects.
         if (sessionManager.getRunProgress(player.getUniqueId()) != null) {
@@ -105,13 +140,26 @@ public class PlayerMoveListener implements Listener {
      * - Spectator game mode (any source: /spec, /gamemode spectator, etc.)
      */
     public static boolean isExemptFromPkw(Player player) {
+        if (isSpecialMode(player)) return true;
+        // Spectator mode
+        if (player.getGameMode() == GameMode.SPECTATOR) return true;
+        return false;
+    }
+
+    /** Special-mode players are excluded from ordinary PKW participation. */
+    public static boolean isSpecialMode(Player player) {
         // Segment special-mode PDC marker
         var key = new NamespacedKey("sitsegment", "special_mode");
         Byte v = player.getPersistentDataContainer().get(key, PersistentDataType.BYTE);
         if (v != null && v == (byte) 1) return true;
-        // Spectator mode
-        if (player.getGameMode() == GameMode.SPECTATOR) return true;
         return false;
+    }
+
+    /** Removes the Segment practice marker when a player is in a PKWS world. */
+    public static void clearSpecialMode(Player player) {
+        if (player == null) return;
+        player.getPersistentDataContainer().remove(
+                new NamespacedKey("sitsegment", "special_mode"));
     }
 
     // ============ PKW-world full gameplay ============
@@ -190,6 +238,13 @@ public class PlayerMoveListener implements Listener {
 
         ParkourMap map = mapManager.getMap(session.getMapId());
         if (map == null) { sessionManager.endSession(player, false); return; }
+        if (map.getNodeType().isPkwsType()) {
+            // A stale/restored session must not turn a PKWS definition into
+            // a legacy PKW gameplay session.
+            sessionManager.endSession(player, false);
+            sessionManager.removeInsideDeployment(player.getUniqueId());
+            return;
+        }
         Deployment deployment = map.getDeployment(session.getDeploymentId());
         if (deployment == null) { sessionManager.endSession(player, false); return; }
 
@@ -413,6 +468,7 @@ public class PlayerMoveListener implements Listener {
 
         for (MapManager.WorldDeployment wd : mapManager.getWorldDeployments(worldName)) {
             NodeType type = wd.map.getNodeType();
+            if (type.isPkwsType()) continue;
             if (type != NodeType.GLOBAL_START && type != NodeType.GLOBAL_END) continue;
             if (type == NodeType.GLOBAL_START) {
                 if (wd.dep.isInStartZone(to)) {
@@ -506,7 +562,8 @@ public class PlayerMoveListener implements Listener {
      */
     private boolean checkHandoff(Player player, ParkourSession session, Location to) {
         for (MapManager.WorldDeployment wd : mapManager.getWorldDeployments(to.getWorld().getName())) {
-            if (wd.map.getNodeType() == NodeType.GLOBAL_START) continue;
+            if (wd.map.getNodeType().isPkwsType()
+                    || wd.map.getNodeType() == NodeType.GLOBAL_START) continue;
             if (wd.map.getId().equalsIgnoreCase(session.getMapId())
                     && wd.dep.getId().equals(session.getDeploymentId())) continue;
 
@@ -533,7 +590,7 @@ public class PlayerMoveListener implements Listener {
     private List<Location> getEntryPoints(ParkourMap map, Deployment dep) {
         List<Location> points = new ArrayList<>();
         NodeType type = map.getNodeType();
-        if (type == NodeType.GLOBAL_START || type == NodeType.GLOBAL_END) {
+        if (type.isPkwsType() || type == NodeType.GLOBAL_START || type == NodeType.GLOBAL_END) {
             return points;
         }
         Region region = dep.getRegion();
@@ -626,7 +683,8 @@ public class PlayerMoveListener implements Listener {
         if (location == null || location.getWorld() == null) return null;
         for (MapManager.WorldDeployment wd : mapManager.getWorldDeployments(location.getWorld().getName())) {
             NodeType type = wd.map.getNodeType();
-            if (type == NodeType.GLOBAL_START || type == NodeType.GLOBAL_END || type == NodeType.BRANCH_END) continue;
+            if (type.isPkwsType()
+                    || type == NodeType.GLOBAL_START || type == NodeType.GLOBAL_END || type == NodeType.BRANCH_END) continue;
             if (type == NodeType.FORK) {
                 List<Location> fps = CourseLinker.resolveForkBranchPoints(wd.map, wd.dep);
                 for (Location fp : fps) {

@@ -53,7 +53,11 @@ public class DynamicService {
     }
 
     public void startForDeployment(ParkourMap map, Deployment deployment) {
-        if (map == null || deployment == null || !isDynamicActive(map)) {
+        // PKWS START/RELAY (and the static PKWS END) are controlled only by
+        // explicit PKWS logic.  Ordinary LEVEL maps placed into a PKWS track
+        // still use this same dynamic engine and task implementation.
+        if (map == null || deployment == null || isPkwsManualStateNode(map)
+                || !isDynamicActive(map)) {
             return;
         }
         String key = buildKey(map.getId(), deployment.getId());
@@ -97,12 +101,22 @@ public class DynamicService {
     }
 
     private boolean isDynamicActive(ParkourMap map) {
-        if (map == null) {
+        if (map == null || isPkwsManualStateNode(map)) {
             return false;
         }
         DynamicData data = map.getDynamicData();
         // Consider dynamic active only when enabled and there are at least 2 states.
         return data.isEnabled() && data.getStates().size() > 1;
+    }
+
+    private boolean isPkwsManualStateNode(ParkourMap map) {
+        if (map == null) {
+            return false;
+        }
+        NodeType type = map.getNodeType();
+        return type == NodeType.PKWS_START
+                || type == NodeType.PKWS_RELAY
+                || type == NodeType.PKWS_END;
     }
 
     /**
@@ -185,25 +199,17 @@ public class DynamicService {
 
         private int playOnce() {
             DynamicData data = map.getDynamicData();
-            List<String> states = data.getStates();
-            List<Integer> intervals = data.getIntervalSequence();
+            List<DynamicState> states = data.getStates();
             if (states.isEmpty()) {
                 return 20;
-            }
-            while (intervals.size() < states.size()) {
-                intervals.add(1);
-            }
-            while (intervals.size() > states.size()) {
-                intervals.remove(intervals.size() - 1);
             }
             if (stateIndex >= states.size()) {
                 stateIndex = 0;
             }
-            int duration = intervals.get(stateIndex);
-            String fileName = states.get(stateIndex);
+            DynamicState state = states.get(stateIndex);
             stateIndex++;
-            pasteSchematic(map, deployment, fileName);
-            return duration;
+            pasteSchematic(map, deployment, state.getFile());
+            return state.getInterval();
         }
     }
 

@@ -1,6 +1,7 @@
 package club.sitmc.sitParkourWarrior.listener;
 
 import club.sitmc.sitParkourWarrior.config.PkwWorldManager;
+import club.sitmc.sitParkourWarrior.pkws.PkwsRaceManager;
 import club.sitmc.sitParkourWarrior.session.RunProgress;
 import club.sitmc.sitParkourWarrior.session.SessionManager;
 import club.sitmc.sitParkourWarrior.visibility.VisibilityManager;
@@ -24,21 +25,25 @@ public class PlayerTeleportListener implements Listener {
     private final SessionManager sessionManager;
     private final PkwWorldManager pkwWorldManager;
     private final VisibilityManager visibilityManager;
+    private final PkwsRaceManager pkwsRaceManager;
 
     public PlayerTeleportListener(SessionManager sessionManager, PkwWorldManager pkwWorldManager,
-                                   VisibilityManager visibilityManager) {
+                                  VisibilityManager visibilityManager) {
+        this(sessionManager, pkwWorldManager, visibilityManager, null);
+    }
+
+    public PlayerTeleportListener(SessionManager sessionManager, PkwWorldManager pkwWorldManager,
+                                  VisibilityManager visibilityManager,
+                                  PkwsRaceManager pkwsRaceManager) {
         this.sessionManager = sessionManager;
         this.pkwWorldManager = pkwWorldManager;
         this.visibilityManager = visibilityManager;
+        this.pkwsRaceManager = pkwsRaceManager;
     }
 
     @EventHandler
     public void onTeleport(PlayerTeleportEvent event) {
         Player player = event.getPlayer();
-
-        // Skip internal teleports (death respawn, checkpoint, handoff, fork fallback, etc.)
-        if (sessionManager.isInternalTeleport(player.getUniqueId())) return;
-
         Location from = event.getFrom();
         Location to = event.getTo();
         if (from == null || to == null) return;
@@ -46,10 +51,54 @@ public class PlayerTeleportListener implements Listener {
         World fromWorld = from.getWorld();
         if (fromWorld == null) return;
 
+        World toWorld = to.getWorld();
+        boolean crossWorldPkws = pkwsRaceManager != null
+                && pkwWorldManager.isPkwsWorld(fromWorld)
+                && (toWorld == null || !fromWorld.equals(toWorld));
+        boolean pkwsLeaveHandled = false;
+        if (crossWorldPkws && pkwsRaceManager.isRunning(fromWorld.getName())
+                && pkwsRaceManager.isParticipant(player.getUniqueId())) {
+            // Cross-world movement during an active PKWS race is an explicit
+            // leave, even if another listener marked this teleport internal.
+            pkwsRaceManager.abandon(player);
+            if (!pkwsRaceManager.isRunning(fromWorld.getName())) {
+                // finishRace may return the player before this event's
+                // requested destination is applied; restore them after it.
+                pkwsRaceManager.scheduleReturnToWorldSpawn(player, fromWorld.getName());
+            }
+            pkwsLeaveHandled = true;
+        }
+
+        // PlayerTeleportEvent fires before Bukkit changes the player's world.
+        // Queue a destination-side PKWS entry check as a fallback for command
+        // integrations that do not deliver PlayerChangedWorldEvent reliably.
+        if (pkwsRaceManager != null && toWorld != null
+                && pkwWorldManager.isPkwsWorld(toWorld)) {
+            pkwsRaceManager.schedulePlayerEntryCheck(player);
+        }
+
+        // Skip internal teleports (death respawn, checkpoint, handoff, fork fallback, etc.)
+        // after the PKWS cross-world leave check above.
+        if (sessionManager.isInternalTeleport(player.getUniqueId())) return;
+
+        if (crossWorldPkws && !pkwsLeaveHandled) {
+            if (pkwsRaceManager.isRunning(fromWorld.getName())) {
+                // A non-participant spectator still needs the normal PKWS
+                // cleanup; the race manager handles this in its world-leave
+                // callback without admitting the player to the race.
+                pkwsRaceManager.onPlayerLeaveWorld(player, fromWorld.getName(), from.clone());
+            } else {
+                // PlayerChangedWorldEvent no longer has the departure
+                // coordinates; capture the exact pre-teleport location here.
+                // The world-change listener remains a defensive fallback for
+                // non-teleport paths.
+                pkwsRaceManager.onPlayerLeaveWorld(player, fromWorld.getName(), from.clone());
+            }
+        }
+
         // Only care about teleports originating from a PKW world
         if (!pkwWorldManager.isPkwWorld(fromWorld)) return;
 
-        World toWorld = to.getWorld();
         // Same-world teleport: the run is NOT interrupted — let it continue
         // as-is (global timer keeps running, session state, medals, and
         // in-level progress are all untouched). Only the player's position changes.

@@ -11,6 +11,11 @@ public class ParkourMap {
     private String title;
     private String subtitle;
     private Difficulty difficulty = Difficulty.EASY;
+    /** PKWS metadata is deliberately separate from the legacy PKW difficulty. */
+    private PkwsOrientation pkwsOrientation;
+    private Integer pkwsDifficulty;
+    private int pkwsWeight;
+    private boolean pkwsMetadataPresent;
     private Region region;
     private PointLocation start;
     private PointLocation end;
@@ -58,6 +63,51 @@ public class ParkourMap {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public PkwsOrientation getPkwsOrientation() {
+        return pkwsOrientation;
+    }
+
+    public void setPkwsOrientation(PkwsOrientation orientation) {
+        this.pkwsOrientation = orientation;
+        this.pkwsMetadataPresent = true;
+    }
+
+    public Integer getPkwsDifficulty() {
+        return pkwsDifficulty;
+    }
+
+    public void setPkwsDifficulty(Integer difficulty) {
+        this.pkwsDifficulty = difficulty != null && difficulty >= 1 && difficulty <= 16
+                ? difficulty : null;
+        this.pkwsMetadataPresent = true;
+    }
+
+    public int getPkwsWeight() {
+        return pkwsWeight;
+    }
+
+    public void setPkwsWeight(int weight) {
+        this.pkwsWeight = Math.max(0, weight);
+        this.pkwsMetadataPresent = true;
+    }
+
+    /** True after a PKWS field was loaded or explicitly edited. */
+    public boolean hasPkwsMetadata() {
+        return pkwsMetadataPresent;
+    }
+
+    /**
+     * Applies values read from disk without turning a legacy map save into a
+     * new PKWS metadata write.  The caller has already validated the values.
+     */
+    public void loadPkwsMetadata(PkwsOrientation orientation, Integer difficulty,
+                                 int weight, boolean present) {
+        this.pkwsOrientation = orientation;
+        this.pkwsDifficulty = difficulty;
+        this.pkwsWeight = Math.max(0, weight);
+        this.pkwsMetadataPresent = present;
     }
 
     public Region getRegion() {

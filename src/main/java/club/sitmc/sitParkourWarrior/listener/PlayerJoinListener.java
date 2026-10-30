@@ -4,6 +4,7 @@ import club.sitmc.sitParkourWarrior.config.PkwWorldManager;
 import club.sitmc.sitParkourWarrior.records.RecordsManager;
 import club.sitmc.sitParkourWarrior.session.RunProgress;
 import club.sitmc.sitParkourWarrior.session.SessionManager;
+import club.sitmc.sitParkourWarrior.pkws.PkwsRaceManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -17,18 +18,24 @@ public class PlayerJoinListener implements Listener {
     private final SessionManager sessionManager;
     private final PkwWorldManager pkwWorldManager;
     private final RecordsManager recordsManager;
+    private final PkwsRaceManager pkwsRaceManager;
 
     public PlayerJoinListener(SessionManager sessionManager, PkwWorldManager pkwWorldManager,
-                              RecordsManager recordsManager) {
+                              RecordsManager recordsManager, PkwsRaceManager pkwsRaceManager) {
         this.sessionManager = sessionManager;
         this.pkwWorldManager = pkwWorldManager;
         this.recordsManager = recordsManager;
+        this.pkwsRaceManager = pkwsRaceManager;
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         var player = event.getPlayer();
         String worldName = player.getWorld().getName();
+        if (pkwWorldManager.isPkwsWorld(worldName)) {
+            pkwsRaceManager.onPlayerEnterWorld(player);
+            return;
+        }
         if (!pkwWorldManager.isPkwWorld(worldName)) return;
 
         // Give interactive items

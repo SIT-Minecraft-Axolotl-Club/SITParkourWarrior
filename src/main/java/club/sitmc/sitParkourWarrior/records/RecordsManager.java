@@ -23,15 +23,79 @@ public class RecordsManager {
 
     private final File file;
     private YamlConfiguration cache;
+    private Runnable onLeaderboardChanged;
 
     public RecordsManager(File dataFolder) {
         this.file = new File(dataFolder, "records.yml");
         this.cache = loadFromDisk();
+        migrateLegacyCountupRecords();
+        rebuildAllCountupLeaderboards();
     }
 
     /** Reload cache from disk (called on /sitpkw reload). */
     public void reload() {
         this.cache = loadFromDisk();
+        migrateLegacyCountupRecords();
+        rebuildAllCountupLeaderboards();
+    }
+
+    /** Migrate the previous one-record-per-player format into the raw result store. */
+    private void migrateLegacyCountupRecords() {
+        ConfigurationSection worlds = cache.getConfigurationSection("worlds");
+        if (worlds == null) return;
+        boolean changed = false;
+        for (String worldName : worlds.getKeys(false)) {
+            ConfigurationSection countup = cache.getConfigurationSection("worlds." + worldName + ".countup");
+            if (countup != null) {
+                for (String key : new ArrayList<>(countup.getKeys(false))) {
+                    String legacyBase = "worlds." + worldName + ".countup." + key;
+                    if (!cache.contains(legacyBase + ".time_ms")) continue;
+                    try {
+                        UUID.fromString(key);
+                        int medals = cache.getInt(legacyBase + ".medals");
+                        String target = legacyBase + "." + medals;
+                        long oldTime = cache.getLong(legacyBase + ".time_ms", Long.MAX_VALUE);
+                        long targetTime = cache.getLong(target + ".time_ms", Long.MAX_VALUE);
+                        if (oldTime < targetTime) {
+                            cache.set(target + ".name", cache.getString(legacyBase + ".name"));
+                            cache.set(target + ".time_ms", oldTime);
+                            cache.set(target + ".medals", medals);
+                        }
+                        cache.set(legacyBase, null);
+                        changed = true;
+                    } catch (IllegalArgumentException ignored) {
+                        // Ignore malformed legacy keys instead of interrupting plugin startup.
+                    }
+                }
+            }
+
+            // Very old files may only have the derived standard view. Preserve it as raw data.
+            ConfigurationSection standard = cache.getConfigurationSection("worlds." + worldName + ".standard");
+            if (standard == null) continue;
+            for (String key : standard.getKeys(false)) {
+                String raw = "worlds." + worldName + ".countup." + key;
+                int medals = standard.getInt(key + ".medals");
+                String target = raw + "." + medals;
+                if (cache.contains(target + ".time_ms")) continue;
+                cache.set(target + ".name", standard.getString(key + ".name"));
+                cache.set(target + ".time_ms", standard.getLong(key + ".time_ms"));
+                cache.set(target + ".medals", medals);
+                changed = true;
+            }
+        }
+        if (changed) persist();
+    }
+
+    private void rebuildAllCountupLeaderboards() {
+        ConfigurationSection worlds = cache.getConfigurationSection("worlds");
+        if (worlds == null) return;
+        for (String worldName : worlds.getKeys(false)) {
+            rebuildCountupLeaderboards(worldName, false);
+        }
+    }
+
+    public void setOnLeaderboardChanged(Runnable callback) {
+        this.onLeaderboardChanged = callback;
     }
 
     // ---------------------------------------------------------------
@@ -282,22 +346,87 @@ public class RecordsManager {
     // COUNTUP leaderboards (best time)
     // ---------------------------------------------------------------
 
-    public boolean saveRecord(String worldName, String tier, UUID playerId,
-                              String playerName, long timeMs, int medals) {
-        String base = "worlds." + worldName + "." + tier + "." + playerId.toString();
+    /** Save the player's best result for this exact medal count, then rebuild all views. */
+    public boolean saveCountupRecord(String worldName, UUID playerId,
+                                     String playerName, long timeMs, int medals) {
+        if (medals < 0 || timeMs < 0) return false;
+        String base = "worlds." + worldName + ".countup." + playerId.toString() + "." + medals;
         long existing = cache.getLong(base + ".time_ms", Long.MAX_VALUE);
         if (timeMs < existing) {
             cache.set(base + ".name", playerName);
             cache.set(base + ".time_ms", timeMs);
             cache.set(base + ".medals", medals);
-            persist();
+            rebuildCountupLeaderboards(worldName, false);
             return true;
         }
         if (!playerName.equals(cache.getString(base + ".name"))) {
             cache.set(base + ".name", playerName);
-            persist();
+            rebuildCountupLeaderboards(worldName, false);
         }
         return false;
+    }
+
+    /** Compatibility entry point for older callers; new code should save the raw result. */
+    public boolean saveRecord(String worldName, String tier, UUID playerId,
+                              String playerName, long timeMs, int medals) {
+        return saveCountupRecord(worldName, playerId, playerName, timeMs, medals);
+    }
+
+    public int getCountupThreshold(String worldName, String tier) {
+        int fallback = "standard".equals(tier) ? 0 : ("advance".equals(tier) ? 16 : 21);
+        return cache.getInt("pkw-world-thresholds." + worldName + "." + tier, fallback);
+    }
+
+    /** Set one threshold and immediately rebuild only this world's three leaderboards. */
+    public boolean setCountupThreshold(String worldName, String tier, int threshold) {
+        if (!"standard".equals(tier) && !"advance".equals(tier) && !"expect".equals(tier)) return false;
+        if (threshold < 0) return false;
+        cache.set("pkw-world-thresholds." + worldName + "." + tier, threshold);
+        rebuildCountupLeaderboards(worldName, true);
+        return true;
+    }
+
+    private void rebuildCountupLeaderboards(String worldName, boolean notify) {
+        for (String tier : new String[]{"standard", "advance", "expect"}) {
+            cache.set("worlds." + worldName + "." + tier, null);
+        }
+        ConfigurationSection raw = cache.getConfigurationSection("worlds." + worldName + ".countup");
+        if (raw != null) {
+            for (String playerKey : raw.getKeys(false)) {
+                try {
+                    UUID.fromString(playerKey);
+                    ConfigurationSection playerRecords = raw.getConfigurationSection(playerKey);
+                    if (playerRecords == null) continue;
+                    for (String medalKey : playerRecords.getKeys(false)) {
+                        int medals;
+                        try { medals = Integer.parseInt(medalKey); }
+                        catch (NumberFormatException ignored) { continue; }
+                        String name = playerRecords.getString(medalKey + ".name");
+                        long time = playerRecords.getLong(medalKey + ".time_ms", Long.MAX_VALUE);
+                        if (name == null || time == Long.MAX_VALUE) continue;
+                        for (String tier : new String[]{"standard", "advance", "expect"}) {
+                            if (medals >= getCountupThreshold(worldName, tier)) {
+                                ConfigurationSection tierSection = cache.getConfigurationSection("worlds." + worldName + "." + tier);
+                                long current = tierSection == null ? Long.MAX_VALUE
+                                        : tierSection.getLong(playerKey + ".time_ms", Long.MAX_VALUE);
+                                if (time < current) {
+                                    String target = "worlds." + worldName + "." + tier + "." + playerKey;
+                                    cache.set(target + ".name", name);
+                                    cache.set(target + ".time_ms", time);
+                                    cache.set(target + ".medals", medals);
+                                }
+                            }
+                        }
+                    }
+                } catch (IllegalArgumentException ignored) {
+                    // Ignore malformed player UUIDs in persisted data.
+                }
+            }
+        }
+        persist();
+        if (notify && onLeaderboardChanged != null) {
+            try { onLeaderboardChanged.run(); } catch (RuntimeException ignored) { }
+        }
     }
 
     public List<RankEntry> getTop(String worldName, String tier, int limit) {
@@ -396,6 +525,74 @@ public class RecordsManager {
             }
         }
         return null;
+    }
+
+    /**
+     * Deletes one raw count-up result for the given medal count and rebuilds
+     * all three derived count-up leaderboards.
+     */
+    public String deleteCountupRecord(String worldName, int medals, String uuidOrName) {
+        if (medals < 0 || uuidOrName == null || uuidOrName.isBlank()) return null;
+
+        ConfigurationSection raw = cache.getConfigurationSection("worlds." + worldName + ".countup");
+        if (raw == null) return null;
+
+        String matchingPlayerKey = null;
+        String matchingName = null;
+        try {
+            UUID requestedId = UUID.fromString(uuidOrName);
+            if (raw.contains(requestedId.toString() + "." + medals + ".time_ms")) {
+                matchingPlayerKey = requestedId.toString();
+                matchingName = raw.getString(matchingPlayerKey + "." + medals + ".name");
+            }
+        } catch (IllegalArgumentException ignored) {
+            // The argument may be a player name; resolve it below.
+        }
+
+        if (matchingPlayerKey == null) {
+            String lowerName = uuidOrName.toLowerCase(java.util.Locale.ROOT);
+            for (String playerKey : raw.getKeys(false)) {
+                String storedName = raw.getString(playerKey + "." + medals + ".name");
+                if (storedName != null && storedName.toLowerCase(java.util.Locale.ROOT).equals(lowerName)
+                        && raw.contains(playerKey + "." + medals + ".time_ms")) {
+                    matchingPlayerKey = playerKey;
+                    matchingName = storedName;
+                    break;
+                }
+            }
+        }
+
+        if (matchingPlayerKey == null) return null;
+        cache.set("worlds." + worldName + ".countup." + matchingPlayerKey + "." + medals, null);
+        rebuildCountupLeaderboards(worldName, true);
+        return matchingName != null ? matchingName : uuidOrName;
+    }
+
+    /** Medal counts currently present in a world's raw count-up records. */
+    public java.util.List<String> getCountupMedalCounts(String worldName) {
+        java.util.Set<String> medals = new java.util.TreeSet<>((a, b) -> {
+            try { return Integer.compare(Integer.parseInt(a), Integer.parseInt(b)); }
+            catch (NumberFormatException ignored) { return a.compareTo(b); }
+        });
+        ConfigurationSection raw = cache.getConfigurationSection("worlds." + worldName + ".countup");
+        if (raw == null) return new java.util.ArrayList<>();
+        for (String playerKey : raw.getKeys(false)) {
+            ConfigurationSection playerRecords = raw.getConfigurationSection(playerKey);
+            if (playerRecords != null) medals.addAll(playerRecords.getKeys(false));
+        }
+        return new java.util.ArrayList<>(medals);
+    }
+
+    public java.util.List<String> getCountupPlayerNames(String worldName, int medals) {
+        java.util.List<String> names = new java.util.ArrayList<>();
+        ConfigurationSection raw = cache.getConfigurationSection("worlds." + worldName + ".countup");
+        if (raw == null) return names;
+        for (String playerKey : raw.getKeys(false)) {
+            if (!raw.contains(playerKey + "." + medals + ".time_ms")) continue;
+            String name = raw.getString(playerKey + "." + medals + ".name");
+            if (name != null) names.add(name);
+        }
+        return names;
     }
 
     public java.util.Set<String> getRecordedWorldNames() {
